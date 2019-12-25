@@ -25,6 +25,6 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## Licence
 
-[MIT Licence](LICENSE.md)
+[MIT - Licence](LICENSE)
 
 This program is intended for individuals to test their own equipment for weak security, and the author will take no responsibility if it is put to any other use.
