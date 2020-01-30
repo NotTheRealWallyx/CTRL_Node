@@ -13,7 +13,7 @@ def askforhost():
     subprocess.call('clear', shell=True)
 
     # Ask for input
-    remoteServer = raw_input("Enter a remote host to scan: ")
+    remoteServer = input("Enter a remote host to scan: ")
 
     return remoteServer
 
@@ -122,8 +122,9 @@ def commonportsscan():
     print("Scanning Completed in: ", total)
 
 
-def dnsscan():
-    remoteServer = askforhost()
+def dnsscan(remoteServer=""):
+    if(remoteServer is ""):
+        remoteServer = askforhost()
 
     print("-" * 60)
     print("DNS results for the domain: ", remoteServer)
@@ -153,9 +154,9 @@ def dnsscan():
     try:
         resaaaa = dns.resolver.query(remoteServer, 'AAAA')
         for rdata in resaaaa:
-            print("     ", rdata)
+            print("	 ", rdata)
     except:
-        print("     None")
+        print("	 None")
 
     ressoa = dns.resolver.query(remoteServer, 'SOA')
     print("")
@@ -168,9 +169,9 @@ def dnsscan():
     try:
         resaaaa = dns.resolver.query(remoteServer, 'TXT')
         for rdata in restxt:
-            print("     ", rdata)
+            print("	 ", rdata)
     except:
-        print("     None")
+        print("	 None")
 
 
 def helpCommands():
@@ -200,7 +201,7 @@ def main(argv):
     if not opts:
         helpCommandsShow = True
 
-    for opt, arg in opts:
+    for opt, args in opts:
         if opt in ("-h", "--help"):
             helpCommands()
             sys.exit()
@@ -211,7 +212,7 @@ def main(argv):
         elif opt in ("-c", "--common"):
             commonportsscan()
         elif opt in ("-d", "--dns"):
-            dnsscan()
+            dnsscan(args)
         else:
             helpCommandsShow = True
 
