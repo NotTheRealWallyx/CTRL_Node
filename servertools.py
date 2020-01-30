@@ -140,13 +140,13 @@ def dnsscan():
     print("")
     print("NS Results: ")
     for rdata in resns:
-        print '     ', rdata
+        print("     ", rdata)
 
     resa = dns.resolver.query(remoteServer, 'A')
     print("")
     print("A Results: ")
     for rdata in resa:
-        print '     ', rdata
+        print("     ", rdata)
 
     print("")
     print("AAA Results: ")
