@@ -4,10 +4,10 @@ Scan the ports of your server or get the DNS records with this small scripts.
 
 ## Prerequisites
 
-You only need two things to run the scripts Python and dnspython to install dnspython you can use pip:
+You only need two things to run the scripts Python3 and dnspython to install dnspython for python3 you can use pip3 or pip:
 
-```
-pip install dnspython
+``` shell
+pip3 install dnspython
 ```
 
 ## Options
