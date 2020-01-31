@@ -10,7 +10,7 @@ import dns.resolver
 
 def askforhost():
     # Clear the screen
-    subprocess.call('clear', shell=True)
+    # subprocess.call('clear', shell=True)
 
     # Ask for input
     remoteServer = input("Enter a remote host to scan: ")
@@ -123,6 +123,7 @@ def commonportsscan():
 
 
 def dnsscan(remoteServer=""):
+    print(remoteServer)
     if(remoteServer is ""):
         remoteServer = askforhost()
 
@@ -167,7 +168,7 @@ def dnsscan(remoteServer=""):
     print("")
     print("TXT Results: ")
     try:
-        resaaaa = dns.resolver.query(remoteServer, 'TXT')
+        restxt = dns.resolver.query(remoteServer, 'TXT')
         for rdata in restxt:
             print("	 ", rdata)
     except:
@@ -216,7 +217,7 @@ def main(argv):
         else:
             helpCommandsShow = True
 
-    if (helpCommandsShow == True):
+    if (helpCommandsShow is True):
         helpCommands()
 
 
