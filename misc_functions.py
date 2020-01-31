@@ -2,6 +2,6 @@ import subprocess
 
 
 def clean_console():
-    comand = ["clear"]
-    subprocess.run(comand, shell=False)
+    # comand = ["clear"]
+    subprocess.run(["clear"], shell=False)
     #subprocess.call(comand, shell=False)
