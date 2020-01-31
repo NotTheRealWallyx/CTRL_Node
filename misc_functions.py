@@ -1,7 +1,5 @@
-import subprocess
+from subprocess import run
 
 
 def clean_console():
-    # comand = ["clear"]
-    subprocess.run(["clear"], shell=False)
-    #subprocess.call(comand, shell=False)
+    run(["/usr/bin/clear"], shell=False)
