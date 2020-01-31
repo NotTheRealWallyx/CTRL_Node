@@ -1,16 +1,14 @@
-#!/usr/bin/env python
 import socket
-# import subprocess
 import sys
 import getopt
 from datetime import datetime
-import dns
-import dns.resolver
+from dns.resolver import NoAnswer, query
 from misc_functions import clean_console
 
 
 def askforhost():
     # Clear the screen
+    # subprocess.call('clear', shell=True)
     clean_console()
 
     # Ask for input
@@ -132,20 +130,20 @@ def dnsscan(remoteServer=""):
     print("DNS results for the domain: ", remoteServer)
     print("-" * 60)
 
-    res = dns.resolver.query(remoteServer, 'MX')
+    res = query(remoteServer, 'MX')
     print("")
     print("MX Results: ")
     for rdata in res:
         print("     Host: ", rdata.exchange,
               " has preference ", rdata.preference)
 
-    resns = dns.resolver.query(remoteServer, 'NS')
+    resns = query(remoteServer, 'NS')
     print("")
     print("NS Results: ")
     for rdata in resns:
         print("     ", rdata)
 
-    resa = dns.resolver.query(remoteServer, 'A')
+    resa = query(remoteServer, 'A')
     print("")
     print("A Results: ")
     for rdata in resa:
@@ -154,13 +152,13 @@ def dnsscan(remoteServer=""):
     print("")
     print("AAA Results: ")
     try:
-        resaaaa = dns.resolver.query(remoteServer, 'AAAA')
+        resaaaa = query(remoteServer, 'AAAA')
         for rdata in resaaaa:
             print("	 ", rdata)
-    except:
+    except NoAnswer:
         print("	 None")
 
-    ressoa = dns.resolver.query(remoteServer, 'SOA')
+    ressoa = query(remoteServer, 'SOA')
     print("")
     print("SOA Results: ")
     for rdata in ressoa:
@@ -169,10 +167,10 @@ def dnsscan(remoteServer=""):
     print("")
     print("TXT Results: ")
     try:
-        restxt = dns.resolver.query(remoteServer, 'TXT')
+        restxt = query(remoteServer, 'TXT')
         for rdata in restxt:
             print("	 ", rdata)
-    except:
+    except NoAnswer:
         print("	 None")
 
 
