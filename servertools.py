@@ -1,16 +1,17 @@
 #!/usr/bin/env python
 import socket
-import subprocess
+# import subprocess
 import sys
 import getopt
 from datetime import datetime
 import dns
 import dns.resolver
+from misc_functions import clean_console
 
 
 def askforhost():
     # Clear the screen
-    # subprocess.call('clear', shell=True)
+    clean_console()
 
     # Ask for input
     remoteServer = input("Enter a remote host to scan: ")
