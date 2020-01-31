@@ -1,5 +1,5 @@
-import os
+import subprocess
 
 def clean_console():
-    comand = "clear"
-    os.system(comand)
+    comand = ["clear"]
+    subprocess.call(comand, shell=False)
