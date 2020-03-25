@@ -23,7 +23,7 @@ Options:
   -h  --help       Show this screen.
   -v  --version    Show version.
   -a  --all        Scan all ports (Takes a while).
-  -c  --common     Only scans the most commond ports.
+  -c  --common     Only scans the most common ports.
   -d  --dns        DNS scan of the domain.
 ```
 ## Tools used

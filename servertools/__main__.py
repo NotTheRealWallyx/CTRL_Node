@@ -1,33 +1,42 @@
+""" main file for the application """
+import getopt
 import socket
 import sys
-import getopt
 from datetime import datetime
-from dns.resolver import NoAnswer, query
-from servertools.misc_functions import clean_console
+
 import pkg_resources
+from dns.resolver import NoAnswer, query
+
+from servertools.misc_functions import clean_console
 
 
-def askforhost():
-    # Clear the screen
+def askforhost() -> str:
+    """
+    Asks for the host name
+
+    Returns:
+        str: input entered by user
+    """
     clean_console()
 
     # Ask for input
-    remoteServer = input("Enter a remote host to scan: ")
+    remote_server = input("Enter a remote host to scan: ")
 
-    return remoteServer
+    return remote_server
 
 
-def scanallports():
-    remoteServer = askforhost()
-    remoteServerIP = socket.gethostbyname(remoteServer)
+def scan_all_ports():
+    """ Scans all known ports of one host """
+    remote_server = askforhost()
+    remote_server_address = socket.gethostbyname(remote_server)
 
     # Print a nice banner with information on which host we are about to scan
     print("-" * 60)
-    print("Please wait, scanning remote host", remoteServerIP)
+    print("Please wait, scanning remote host", remote_server_address)
     print("-" * 60)
 
     # Check what time the scan started
-    t1 = datetime.now()
+    start_time = datetime.now()
 
     # Using the range function to specify ports (here it will scans all ports between 1 and 1024)
 
@@ -37,7 +46,7 @@ def scanallports():
         for port in range(1, 1025):
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.settimeout(1)
-            result = sock.connect_ex((remoteServerIP, port))
+            result = sock.connect_ex((remote_server_address, port))
             sock.settimeout(None)
             if result == 0:
                 print("Port {}: 	 Open".format(port))
@@ -57,39 +66,38 @@ def scanallports():
         sys.exit()
 
     # Checking the time again
-    t2 = datetime.now()
+    end_time = datetime.now()
 
     # Calculates the difference of time, to see how long it took to run the script
-    total = t2 - t1
+    total = end_time - start_time
 
     # Printing the information to screen
     print("Scanning Completed in: ", total)
 
 
-def commonportsscan():
-    ports = [20, 21, 22, 23, 25, 53, 80, 110,
-             143, 161, 162, 443, 636, 989, 990, 3306]
+def common_port_scan():
+    """ Scans the common ports of one host """
+    ports = [20, 21, 22, 23, 25, 53, 80, 110, 143, 161, 162, 443, 636, 989, 990, 3306]
 
-    remoteServer = askforhost()
-    remoteServerIP = socket.gethostbyname(remoteServer)
+    remote_server = askforhost()
+    remote_server_address = socket.gethostbyname(remote_server)
 
     # Print a nice banner with information on which host we are about to scan
     print("-" * 60)
-    print("Please wait, scanning remote host", remoteServerIP)
+    print("Please wait, scanning remote host", remote_server_address)
     print("-" * 60)
 
     # Check what time the scan started
-    t1 = datetime.now()
+    start_time = datetime.now()
 
     # Using the range function to specify ports (here it will scans all ports between 1 and 1024)
-
     # We also put in some error handling for catching errors
 
     try:
         for port in ports:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.settimeout(1)
-            result = sock.connect_ex((remoteServerIP, port))
+            result = sock.connect_ex((remote_server_address, port))
             sock.settimeout(None)
             if result == 0:
                 print("Port {}: 	 Open".format(port))
@@ -112,112 +120,117 @@ def commonportsscan():
         sys.exit()
 
     # Checking the time again
-    t2 = datetime.now()
+    end_time = datetime.now()
 
     # Calculates the difference of time, to see how long it took to run the script
-    total = t2 - t1
+    total = end_time - start_time
 
     # Printing the information to screen
     print("Scanning Completed in: ", total)
 
 
-def dnsscan(remoteServer=""):
-    print(remoteServer)
-    if(remoteServer is ""):
-        remoteServer = askforhost()
+def dns_scan(remote_server=""):
+    """ Makes a DNS scan of the given host """
+    print(remote_server)
+    if remote_server == "":
+        remote_server = askforhost()
 
     print("-" * 60)
-    print("DNS results for the domain: ", remoteServer)
+    print("DNS results for the domain: ", remote_server)
     print("-" * 60)
 
-    res = query(remoteServer, 'MX')
+    mx_results = query(remote_server, "MX")
     print("")
     print("MX Results: ")
-    for rdata in res:
-        print("     Host: ", rdata.exchange,
-              " has preference ", rdata.preference)
+    for mx_result in mx_results:
+        print("     Host: ", mx_result.exchange, " has preference ", mx_result.preference)
 
-    resns = query(remoteServer, 'NS')
+    ns_results = query(remote_server, "NS")
     print("")
     print("NS Results: ")
-    for rdata in resns:
-        print("     ", rdata)
+    for ns_result in ns_results:
+        print("     ", ns_result)
 
-    resa = query(remoteServer, 'A')
+    a_results = query(remote_server, "A")
     print("")
     print("A Results: ")
-    for rdata in resa:
-        print("     ", rdata)
+    for a_result in a_results:
+        print("     ", a_result)
 
     print("")
     print("AAA Results: ")
     try:
-        resaaaa = query(remoteServer, 'AAAA')
-        for rdata in resaaaa:
-            print("	 ", rdata)
+        aaa_results = query(remote_server, "AAAA")
+        for aaa_result in aaa_results:
+            print("	 ", aaa_result)
     except NoAnswer:
         print("	 None")
 
-    ressoa = query(remoteServer, 'SOA')
+    soa_results = query(remote_server, "SOA")
     print("")
     print("SOA Results: ")
-    for rdata in ressoa:
-        print('     ', rdata)
+    for soa_result in soa_results:
+        print("     ", soa_result)
 
     print("")
     print("TXT Results: ")
     try:
-        restxt = query(remoteServer, 'TXT')
-        for rdata in restxt:
-            print("	 ", rdata)
+        txt_results = query(remote_server, "TXT")
+        for txt_result in txt_results:
+            print("	 ", txt_result)
     except NoAnswer:
         print("	 None")
 
 
-def helpCommands():
+def help_commands():
+    """ Shows the help option of the application """
     print("Server Tools: ")
     print(" ")
     print("Options: ")
     print("  -h  --help       Show this screen.")
     print("  -v  --version    Show version.")
     print("  -a  --all        Scan all ports (Takes a while).")
-    print("  -c  --common     Only scans the most commond ports.")
+    print("  -c  --common     Only scans the most common ports.")
     print("  -d  --dns        DNS scan of the domain.")
 
 
 def version():
-    version = pkg_resources.require("servertools")[0].version
-    print(f"You are running version {version} ")
+    """ Shows the version of the application on the terminal """
+    application_version = pkg_resources.require("servertools")[0].version
+    print(f"You are running version {application_version} ")
+
 
 def main(argv):
-    helpCommandsShow = False
+    """ Main function of the application """
+    help_command_show = False
     try:
-        opts, args = getopt.getopt(argv, "hi:vi:ai:ci:di:", [
-                                   "version", "help", "all", "common", "dns"])
+        opts, args = getopt.getopt(
+            argv, "hi:vi:ai:ci:di:", ["version", "help", "all", "common", "dns"]
+        )
     except getopt.GetoptError:
-        helpCommandsShow = True
+        help_command_show = True
         sys.exit(2)
 
     if not opts:
-        helpCommandsShow = True
+        help_command_show = True
 
     for opt, args in opts:
         if opt in ("-h", "--help"):
-            helpCommands()
+            help_commands()
             sys.exit()
         elif opt in ("-v", "--version"):
             version()
         elif opt in ("-a", "--all"):
-            scanallports()
+            scan_all_ports()
         elif opt in ("-c", "--common"):
-            commonportsscan()
+            common_port_scan()
         elif opt in ("-d", "--dns"):
-            dnsscan(args)
+            dns_scan(args)
         else:
-            helpCommandsShow = True
+            help_command_show = True
 
-    if (helpCommandsShow is True):
-        helpCommands()
+    if help_command_show is True:
+        help_commands()
 
 
 if __name__ == "__main__":
