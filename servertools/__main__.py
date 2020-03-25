@@ -67,8 +67,7 @@ def scanallports():
 
 
 def commonportsscan():
-    ports = [20, 21, 22, 23, 25, 53, 80, 110,
-             143, 161, 162, 443, 636, 989, 990, 3306]
+    ports = [20, 21, 22, 23, 25, 53, 80, 110, 143, 161, 162, 443, 636, 989, 990, 3306]
 
     remoteServer = askforhost()
     remoteServerIP = socket.gethostbyname(remoteServer)
@@ -123,27 +122,26 @@ def commonportsscan():
 
 def dnsscan(remoteServer=""):
     print(remoteServer)
-    if(remoteServer is ""):
+    if remoteServer is "":
         remoteServer = askforhost()
 
     print("-" * 60)
     print("DNS results for the domain: ", remoteServer)
     print("-" * 60)
 
-    res = query(remoteServer, 'MX')
+    res = query(remoteServer, "MX")
     print("")
     print("MX Results: ")
     for rdata in res:
-        print("     Host: ", rdata.exchange,
-              " has preference ", rdata.preference)
+        print("     Host: ", rdata.exchange, " has preference ", rdata.preference)
 
-    resns = query(remoteServer, 'NS')
+    resns = query(remoteServer, "NS")
     print("")
     print("NS Results: ")
     for rdata in resns:
         print("     ", rdata)
 
-    resa = query(remoteServer, 'A')
+    resa = query(remoteServer, "A")
     print("")
     print("A Results: ")
     for rdata in resa:
@@ -152,22 +150,22 @@ def dnsscan(remoteServer=""):
     print("")
     print("AAA Results: ")
     try:
-        resaaaa = query(remoteServer, 'AAAA')
+        resaaaa = query(remoteServer, "AAAA")
         for rdata in resaaaa:
             print("	 ", rdata)
     except NoAnswer:
         print("	 None")
 
-    ressoa = query(remoteServer, 'SOA')
+    ressoa = query(remoteServer, "SOA")
     print("")
     print("SOA Results: ")
     for rdata in ressoa:
-        print('     ', rdata)
+        print("     ", rdata)
 
     print("")
     print("TXT Results: ")
     try:
-        restxt = query(remoteServer, 'TXT')
+        restxt = query(remoteServer, "TXT")
         for rdata in restxt:
             print("	 ", rdata)
     except NoAnswer:
@@ -189,11 +187,13 @@ def version():
     version = pkg_resources.require("servertools")[0].version
     print(f"You are running version {version} ")
 
+
 def main(argv):
     helpCommandsShow = False
     try:
-        opts, args = getopt.getopt(argv, "hi:vi:ai:ci:di:", [
-                                   "version", "help", "all", "common", "dns"])
+        opts, args = getopt.getopt(
+            argv, "hi:vi:ai:ci:di:", ["version", "help", "all", "common", "dns"]
+        )
     except getopt.GetoptError:
         helpCommandsShow = True
         sys.exit(2)
@@ -216,7 +216,7 @@ def main(argv):
         else:
             helpCommandsShow = True
 
-    if (helpCommandsShow is True):
+    if helpCommandsShow is True:
         helpCommands()
 
 

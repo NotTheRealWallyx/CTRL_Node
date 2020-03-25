@@ -6,12 +6,7 @@ setup(
     version="0.0.1",
     description="Various tools for managing or checking servers",
     author="sWallyx",
-    keywords=[
-        "python",
-        "scripts",
-        "server",
-        "tools",
-    ],
+    keywords=["python", "scripts", "server", "tools"],
     classifiers=[],
     install_requires=["dnspython"],
     setup_requires=[],
