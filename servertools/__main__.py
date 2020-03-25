@@ -3,12 +3,12 @@ import sys
 import getopt
 from datetime import datetime
 from dns.resolver import NoAnswer, query
-from misc_functions import clean_console
+from servertools.misc_functions import clean_console
+import pkg_resources
 
 
 def askforhost():
     # Clear the screen
-    # subprocess.call('clear', shell=True)
     clean_console()
 
     # Ask for input
@@ -186,8 +186,8 @@ def helpCommands():
 
 
 def version():
-    print("You are running version 0.1 ")
-
+    version = pkg_resources.require("servertools")[0].version
+    print(f"You are running version {version} ")
 
 def main(argv):
     helpCommandsShow = False
