@@ -1,10 +1,12 @@
+import getopt
 import socket
 import sys
-import getopt
 from datetime import datetime
-from dns.resolver import NoAnswer, query
-from servertools.misc_functions import clean_console
+
 import pkg_resources
+from dns.resolver import NoAnswer, query
+
+from servertools.misc_functions import clean_console
 
 
 def askforhost():
