@@ -19,7 +19,7 @@ def askforhost():
     return remoteServer
 
 
-def scanallports():
+def scan_all_ports():
     remoteServer = askforhost()
     remoteServerIP = socket.gethostbyname(remoteServer)
 
@@ -68,7 +68,7 @@ def scanallports():
     print("Scanning Completed in: ", total)
 
 
-def commonportsscan():
+def common_port_scan():
     ports = [20, 21, 22, 23, 25, 53, 80, 110, 143, 161, 162, 443, 636, 989, 990, 3306]
 
     remoteServer = askforhost()
@@ -122,7 +122,7 @@ def commonportsscan():
     print("Scanning Completed in: ", total)
 
 
-def dnsscan(remoteServer=""):
+def dns_scan(remoteServer=""):
     print(remoteServer)
     if remoteServer is "":
         remoteServer = askforhost()
@@ -131,57 +131,57 @@ def dnsscan(remoteServer=""):
     print("DNS results for the domain: ", remoteServer)
     print("-" * 60)
 
-    res = query(remoteServer, "MX")
+    mx_results = query(remoteServer, "MX")
     print("")
     print("MX Results: ")
-    for rdata in res:
-        print("     Host: ", rdata.exchange, " has preference ", rdata.preference)
+    for mx_result in mx_results:
+        print("     Host: ", mx_result.exchange, " has preference ", mx_result.preference)
 
-    resns = query(remoteServer, "NS")
+    ns_results = query(remoteServer, "NS")
     print("")
     print("NS Results: ")
-    for rdata in resns:
-        print("     ", rdata)
+    for ns_result in ns_results:
+        print("     ", ns_result)
 
-    resa = query(remoteServer, "A")
+    a_results = query(remoteServer, "A")
     print("")
     print("A Results: ")
-    for rdata in resa:
-        print("     ", rdata)
+    for a_result in a_results:
+        print("     ", a_result)
 
     print("")
     print("AAA Results: ")
     try:
-        resaaaa = query(remoteServer, "AAAA")
-        for rdata in resaaaa:
-            print("	 ", rdata)
+        aaa_results = query(remoteServer, "AAAA")
+        for aaa_result in aaa_results:
+            print("	 ", aaa_result)
     except NoAnswer:
         print("	 None")
 
-    ressoa = query(remoteServer, "SOA")
+    soa_results = query(remoteServer, "SOA")
     print("")
     print("SOA Results: ")
-    for rdata in ressoa:
-        print("     ", rdata)
+    for soa_result in soa_results:
+        print("     ", soa_result)
 
     print("")
     print("TXT Results: ")
     try:
-        restxt = query(remoteServer, "TXT")
-        for rdata in restxt:
-            print("	 ", rdata)
+        txt_results = query(remoteServer, "TXT")
+        for txt_result in txt_results:
+            print("	 ", txt_result)
     except NoAnswer:
         print("	 None")
 
 
-def helpCommands():
+def help_commands():
     print("Server Tools: ")
     print(" ")
     print("Options: ")
     print("  -h  --help       Show this screen.")
     print("  -v  --version    Show version.")
     print("  -a  --all        Scan all ports (Takes a while).")
-    print("  -c  --common     Only scans the most commond ports.")
+    print("  -c  --common     Only scans the most common ports.")
     print("  -d  --dns        DNS scan of the domain.")
 
 
@@ -205,21 +205,21 @@ def main(argv):
 
     for opt, args in opts:
         if opt in ("-h", "--help"):
-            helpCommands()
+            help_commands()
             sys.exit()
         elif opt in ("-v", "--version"):
             version()
         elif opt in ("-a", "--all"):
-            scanallports()
+            scan_all_ports()
         elif opt in ("-c", "--common"):
-            commonportsscan()
+            common_port_scan()
         elif opt in ("-d", "--dns"):
-            dnsscan(args)
+            dns_scan(args)
         else:
             helpCommandsShow = True
 
     if helpCommandsShow is True:
-        helpCommands()
+        help_commands()
 
 
 if __name__ == "__main__":
