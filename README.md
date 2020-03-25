@@ -4,24 +4,38 @@
 
 Scan the ports of your server or get the DNS records with this small scripts.
 
-## Prerequisites
+## Installation
 
-You only need two things to run the scripts Python3 and dnspython to install dnspython for python3 you can use pip3 or pip:
+Clone the repository from Github with:
 
 ``` shell
-pip3 install dnspython
+git clone https://github.com/sWallyx/server-tools.git
+```
+Run the installation script:
+
+``` shell
+python setup.py install
 ```
 
 ## Options
-
+```
 Options:
   -h  --help       Show this screen.
   -v  --version    Show version.
   -a  --all        Scan all ports (Takes a while).
   -c  --common     Only scans the most commond ports.
   -d  --dns        DNS scan of the domain.
+```
+## Tools used
 
-## Versioning
+### Format
+To keep the application with a standard we use the following tools:
+* [Codacy](https://www.codacy.com)
+* [Pylint](https://www.pylint.org)
+* [isort](https://timothycrosley.github.io/isort/)
+* [Black](https://black.readthedocs.io/en/stable/)
+
+### Versioning
 
 We use [SemVer](http://semver.org/) for versioning.
 
