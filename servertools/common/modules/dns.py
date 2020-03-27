@@ -6,18 +6,18 @@ from dns.resolver import NoAnswer, query
 
 from servertools.common.misc_functions import askforhost, clean_console
 from servertools.variables.globals import TERMINAL_PROMPT
-from servertools.variables.logos import SERVER_TOOLS_LOGO
+from servertools.variables.logos import DNS_LOGO
 
 
 class DnsScan:
     def __init__(self):
         """
-        Clears the console and shows the menu to ask the user
-        to select an option
+            Clears the console and shows the menu to ask the user
+            to select an option.
         """
         clean_console()
         print(
-            SERVER_TOOLS_LOGO
+            DNS_LOGO
             + """
          1 - Scan host
          0 - Main meu
@@ -29,10 +29,10 @@ class DnsScan:
 
     def execute_menu(self, option: int):
         """
-        Executes the menu of the class
+            Executes the menu of the class.
 
-        Arguments:
-            option {int}: User selected option
+            Arguments:
+                option {int}: User selected option
         """
         back_menu = False
         wrong_option = False
@@ -88,11 +88,11 @@ class DnsScan:
 
     def create_query_and_show_results(self, record: str):
         """
-        Creates the query for the given DNS record, and shows
-        and shows the information.
+            Creates the query for the given DNS record, and shows
+            and shows the information.
 
-        Arguments:
-            record {str}: Record to create the query
+            Arguments:
+                record {str}: Record to create the query
         """
         try:
             results = query(self.host_to_scan, record)
