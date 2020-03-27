@@ -1,4 +1,4 @@
-""" main file for the application """
+""" Main file for the application """
 import sys
 
 from servertools.common.misc_functions import clean_console, version

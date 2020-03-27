@@ -1,3 +1,5 @@
+""" Variables that contain the logo ASCII text """
+
 SERVER_TOOLS_LOGO = r"""
  ____                             _____           _
 / ___|  ___ _ ____   _____ _ __  |_   _|__   ___ | |___
