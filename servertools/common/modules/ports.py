@@ -9,7 +9,7 @@ from servertools.variables.logos import SCAN_PORTS_LOGO
 
 
 class ScanPorts:
-    def __init__(self: ScanPorts):
+    def __init__(self):
         """
             Clears the console and shows the menu to ask the user
             to select an option.
@@ -27,7 +27,7 @@ class ScanPorts:
         user_option = input(TERMINAL_PROMPT)
         self.execute_menu(user_option)
 
-    def execute_menu(self: ScanPorts, option: int):
+    def execute_menu(self, option: int):
         """
             Executes the menu of the class.
 
@@ -52,17 +52,17 @@ class ScanPorts:
         else:
             self.completed()
 
-    def completed(self: ScanPorts):
+    def completed(self):
         """ Shows the complete message and calls back the class """
         input("\nCompleted, click return to go back.")
         self.__init__()
 
-    def try_again(self: ScanPorts):
+    def try_again(self):
         """ Shows the error message and calls back the class """
         input("That option does not exit, click return to go back.")
         self.__init__()
 
-    def scan_ports(self: ScanPorts, common: bool = True):
+    def scan_ports(self, common: bool = True):
         """
             Calls for the scan ports function, it will call for only
             the common ones or first 1024 ports depending on the parameter.
@@ -105,7 +105,7 @@ class ScanPorts:
 
         print("Scanning Completed in: ", total)
 
-    def scan_all_ports(self: ScanPorts, host):
+    def scan_all_ports(self, host):
         """
             This will scan only the first 1024, from 1 to 1024 and will print just the
             open ones. Using the socket module.
@@ -116,7 +116,7 @@ class ScanPorts:
         for port in range(1, 1025):
             self.check_port_and_call_for_result(host, port, True)
 
-    def common_port_scan(self: ScanPorts, host):
+    def common_port_scan(self, host):
         """
             Scans the common ports of one host, using the socket module.
 
@@ -145,7 +145,7 @@ class ScanPorts:
         sys.stdout.flush()
         sock.close()
 
-    def show_port_open_or_close(self: ScanPorts, result: int, port: int, silence: bool = False):
+    def show_port_open_or_close(self, result: int, port: int, silence: bool = False):
         """
             Depending on the response parsed to the function prints if the
             port is open or closed, the closed ones can be silenced with the
