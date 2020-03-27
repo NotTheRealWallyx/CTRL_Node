@@ -1,15 +1,13 @@
 """ main file for the application """
 import sys
 
-import pkg_resources
-
-from servertools.common.misc_functions import clean_console
+from servertools.common.misc_functions import clean_console, version
 from servertools.variables.globals import TERMINAL_PROMPT
 from servertools.variables.logos import SERVER_TOOLS_LOGO
-from servertools.common.modules.ports import scan_ports
-from servertools.common.modules.dns import dns_scan
+from servertools.common.modules.ports import ScanPorts
+from servertools.common.modules.dns import DnsScan
 
-class server_tools:
+class ServerTools:
     """ Main class for the application """
     def __init__(self):
         clean_console()
@@ -22,36 +20,39 @@ class server_tools:
         user_option = input(TERMINAL_PROMPT)
         self.execute_menu(user_option)
 
-    def execute_menu(self, option):
+    def execute_menu(self, option: int):
+        """
+        Executes the menu of the class
+
+        Arguments:
+            option {int}: User selected option
+        """
         wrong_option = False
         if option == "1":
-            scan_ports()
+            ScanPorts()
         elif option == "2":
-            dns_scan()
+            DnsScan()
         elif option == "3":
-            self.version()
+            version()
         elif option == "0":
             sys.exit()
         else:
             wrong_option = True
-            
+
         if wrong_option:
             self.try_again()
         else:
             self.completed()
 
-    def version(self):
-        """ Shows the version of the application on the terminal """
-        application_version = pkg_resources.require("servertools")[0].version
-        print(f"You are running version {application_version} ")
-
     def completed(self):
+        """ Shows the complete message and calls back the class """
         input("Completed, click return to go back.")
         self.__init__()
 
     def try_again(self):
+        """ Shows the error message and calls back the class """
         input("That option does not exit, click return to go back.")
         self.__init__()
 
 if __name__ == "__main__":
-    server_tools()
+    ServerTools()

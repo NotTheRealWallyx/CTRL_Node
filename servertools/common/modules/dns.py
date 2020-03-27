@@ -4,56 +4,79 @@ from datetime import datetime
 
 from dns.resolver import NoAnswer, query
 
-from servertools.common.misc_functions import askforhost
+from servertools.common.misc_functions import askforhost, clean_console
+from servertools.variables.globals import TERMINAL_PROMPT
+from servertools.variables.logos import SERVER_TOOLS_LOGO
 
-def dns_scan(remote_server=""):
-    """ Makes a DNS scan of the given host """
-    print(remote_server)
-    if remote_server == "":
-        remote_server = askforhost()
+class DnsScan:
+    def __init__(self):
+        clean_console()
+        print(SERVER_TOOLS_LOGO + """
+         1 - Scan host
+         0 - Main meu
+        """)
+        user_option = input(TERMINAL_PROMPT)
+        self.execute_menu(user_option)
 
-    print("-" * 60)
-    print("DNS results for the domain: ", remote_server)
-    print("-" * 60)
+    def execute_menu(self, option):
+        back_menu = False
+        wrong_option = False
+        if option == "1":
+            self.host_to_scan = askforhost()
+            self.dns_scan()
+        elif option == "0":
+            back_menu = True
+        else:
+            wrong_option = True
 
-    mx_results = query(remote_server, "MX")
-    print("")
-    print("MX Results: ")
-    for mx_result in mx_results:
-        print("     Host: ", mx_result.exchange, " has preference ", mx_result.preference)
+        if wrong_option:
+            self.try_again()
+        elif back_menu:
+            pass
+        else:
+            self.completed()
 
-    ns_results = query(remote_server, "NS")
-    print("")
-    print("NS Results: ")
-    for ns_result in ns_results:
-        print("     ", ns_result)
+    def completed(self):
+        input("\nCompleted, click return to go back.")
+        self.__init__()
 
-    a_results = query(remote_server, "A")
-    print("")
-    print("A Results: ")
-    for a_result in a_results:
-        print("     ", a_result)
+    def try_again(self):
+        input("That option does not exit, click return to go back.")
+        self.__init__()
 
-    print("")
-    print("AAA Results: ")
-    try:
-        aaa_results = query(remote_server, "AAAA")
-        for aaa_result in aaa_results:
-            print("	 ", aaa_result)
-    except NoAnswer:
-        print("	 None")
+    def dns_scan(self):
+        """ Makes a DNS scan of the given host """
 
-    soa_results = query(remote_server, "SOA")
-    print("")
-    print("SOA Results: ")
-    for soa_result in soa_results:
-        print("     ", soa_result)
+        print("-" * 60)
+        print("DNS results for the domain: ", self.host_to_scan)
+        print("-" * 60)
 
-    print("")
-    print("TXT Results: ")
-    try:
-        txt_results = query(remote_server, "TXT")
-        for txt_result in txt_results:
-            print("	 ", txt_result)
-    except NoAnswer:
-        print("	 None")
+        mx_results = query(self.host_to_scan, "MX")
+        print("")
+        print("MX Results: ")
+        for mx_result in mx_results:
+            print("     Host: ", mx_result.exchange, " has preference ", mx_result.preference)
+
+        # Show different records
+        self.create_query_and_show_results("NS")
+        self.create_query_and_show_results("A")
+        self.create_query_and_show_results("AAAA")
+        self.create_query_and_show_results("SOA")
+        self.create_query_and_show_results("TXT")
+    
+    def create_query_and_show_results(self, record: str):
+        """
+        Creates the query for the given DNS record, and shows
+        and shows the information.
+
+        Arguments:
+            record {str}: Record to create the query
+        """
+        try:
+            results = query(self.host_to_scan, record)
+            print("")
+            print(f"{record} Results: ")
+            for result in results:
+                print("     ", result)
+        except NoAnswer:
+            print("     None")

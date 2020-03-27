@@ -5,12 +5,12 @@ from datetime import datetime
 
 from servertools.common.misc_functions import askforhost, clean_console
 from servertools.variables.globals import TERMINAL_PROMPT
-from servertools.variables.logos import SERVER_TOOLS_LOGO
+from servertools.variables.logos import SCAN_PORTS_LOGO
 
-class scan_ports:
+class ScanPorts:
     def __init__(self):
         clean_console()
-        print(SERVER_TOOLS_LOGO + """
+        print(SCAN_PORTS_LOGO + """
          1 - All ports
          2 - Common ports
          0 - Main meu
@@ -38,7 +38,7 @@ class scan_ports:
             self.completed()
 
     def completed(self):
-        input("Completed, click return to go back.")
+        input("\nCompleted, click return to go back.")
         self.__init__()
 
     def try_again(self):
