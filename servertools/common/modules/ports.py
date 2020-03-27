@@ -7,6 +7,7 @@ from servertools.common.misc_functions import askforhost, clean_console
 from servertools.variables.globals import TERMINAL_PROMPT
 from servertools.variables.logos import SCAN_PORTS_LOGO
 
+
 class ScanPorts:
     def __init__(self):
         """
@@ -14,12 +15,15 @@ class ScanPorts:
         to select an option
         """
         clean_console()
-        print(SCAN_PORTS_LOGO + """
+        print(
+            SCAN_PORTS_LOGO
+            + """
          1 - All ports
          2 - Common ports
          0 - Main meu
-        """)
-        
+        """
+        )
+
         user_option = input(TERMINAL_PROMPT)
         self.execute_menu(user_option)
 
@@ -107,7 +111,24 @@ class ScanPorts:
 
     def common_port_scan(self):
         """ Scans the common ports of one host """
-        ports = [20, 21, 22, 23, 25, 53, 80, 110, 143, 161, 162, 443, 636, 989, 990, 3306]
+        ports = [
+            20,
+            21,
+            22,
+            23,
+            25,
+            53,
+            80,
+            110,
+            143,
+            161,
+            162,
+            443,
+            636,
+            989,
+            990,
+            3306,
+        ]
 
         remote_server = askforhost()
         remote_server_address = socket.gethostbyname(remote_server)
@@ -157,4 +178,3 @@ class ScanPorts:
 
         # Printing the information to screen
         print("Scanning Completed in: ", total)
-
