@@ -74,8 +74,7 @@ class DnsScan:
         """
         try:
             results = query(self.host_to_scan, record)
-            print("")
-            print(f"{record} Results: ")
+            print(f"\n{record} Results: ")
             for result in results:
                 print("     ", result)
         except NoAnswer:
