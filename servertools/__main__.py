@@ -1,4 +1,4 @@
-""" main file for the application """
+""" Main file for the application """
 import sys
 
 from servertools.common.misc_functions import clean_console, version
@@ -13,8 +13,8 @@ class ServerTools:
 
     def __init__(self):
         """
-        Clears the console and shows the menu to ask the user
-        to select an option
+            Clears the console and shows the menu to ask the user
+            to select an option.
         """
         clean_console()
         print(
@@ -32,10 +32,10 @@ class ServerTools:
 
     def execute_menu(self, option: int):
         """
-        Executes the menu of the class
+            Executes the menu of the class.
 
-        Arguments:
-            option {int}: User selected option
+            Arguments:
+                option {int}: User selected option
         """
         wrong_option = False
         if option == "1":

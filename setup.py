@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="servertools",
-    version="0.0.1",
+    version="0.0.2",
     description="Various tools for managing or checking servers",
     author="sWallyx",
     keywords=["python", "scripts", "server", "tools"],
