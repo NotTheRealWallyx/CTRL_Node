@@ -10,15 +10,26 @@ from servertools.variables.logos import SERVER_TOOLS_LOGO
 
 class DnsScan:
     def __init__(self):
+        """
+        Clears the console and shows the menu to ask the user
+        to select an option
+        """
         clean_console()
         print(SERVER_TOOLS_LOGO + """
          1 - Scan host
          0 - Main meu
         """)
+        
         user_option = input(TERMINAL_PROMPT)
         self.execute_menu(user_option)
 
-    def execute_menu(self, option):
+    def execute_menu(self, option: int):
+        """
+        Executes the menu of the class
+
+        Arguments:
+            option {int}: User selected option
+        """
         back_menu = False
         wrong_option = False
         if option == "1":
@@ -37,10 +48,12 @@ class DnsScan:
             self.completed()
 
     def completed(self):
+        """ Shows the complete message and calls back the class """
         input("\nCompleted, click return to go back.")
         self.__init__()
 
     def try_again(self):
+        """ Shows the error message and calls back the class """
         input("That option does not exit, click return to go back.")
         self.__init__()
 

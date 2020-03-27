@@ -9,16 +9,27 @@ from servertools.variables.logos import SCAN_PORTS_LOGO
 
 class ScanPorts:
     def __init__(self):
+        """
+        Clears the console and shows the menu to ask the user
+        to select an option
+        """
         clean_console()
         print(SCAN_PORTS_LOGO + """
          1 - All ports
          2 - Common ports
          0 - Main meu
         """)
+        
         user_option = input(TERMINAL_PROMPT)
         self.execute_menu(user_option)
 
-    def execute_menu(self, option):
+    def execute_menu(self, option: int):
+        """
+        Executes the menu of the class
+
+        Arguments:
+            option {int}: User selected option
+        """
         back_menu = False
         wrong_option = False
         if option == "1":
@@ -38,10 +49,12 @@ class ScanPorts:
             self.completed()
 
     def completed(self):
+        """ Shows the complete message and calls back the class """
         input("\nCompleted, click return to go back.")
         self.__init__()
 
     def try_again(self):
+        """ Shows the error message and calls back the class """
         input("That option does not exit, click return to go back.")
         self.__init__()
 
@@ -59,9 +72,7 @@ class ScanPorts:
         start_time = datetime.now()
 
         # Using the range function to specify ports (here it will scans all ports between 1 and 1024)
-
         # We also put in some error handling for catching errors
-
         try:
             for port in range(1, 1025):
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

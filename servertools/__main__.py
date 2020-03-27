@@ -10,6 +10,10 @@ from servertools.common.modules.dns import DnsScan
 class ServerTools:
     """ Main class for the application """
     def __init__(self):
+        """
+        Clears the console and shows the menu to ask the user
+        to select an option
+        """
         clean_console()
         print(SERVER_TOOLS_LOGO + """
          1 - Scan ports
@@ -17,6 +21,7 @@ class ServerTools:
          3 - Show application version
          0 - Exit
         """)
+        
         user_option = input(TERMINAL_PROMPT)
         self.execute_menu(user_option)
 
