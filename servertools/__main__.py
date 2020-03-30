@@ -3,6 +3,7 @@ import sys
 
 from servertools.common.misc_functions import clean_console, version
 from servertools.common.modules.dns import DnsScan
+from servertools.common.modules.host_to_ip import HostToIp
 from servertools.common.modules.ports import ScanPorts
 from servertools.variables.globals import TERMINAL_PROMPT
 from servertools.variables.logos import SERVER_TOOLS_LOGO
@@ -22,7 +23,8 @@ class ServerTools:
             + """
          1 - Scan ports
          2 - DNS look up
-         3 - Show application version
+         3 - Host to IP
+         4 - Show application version
          0 - Exit
         """
         )
@@ -43,6 +45,8 @@ class ServerTools:
         elif option == "2":
             DnsScan()
         elif option == "3":
+            HostToIp()
+        elif option == "4":
             version()
         elif option == "0":
             sys.exit()
