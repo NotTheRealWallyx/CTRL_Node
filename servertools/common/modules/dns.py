@@ -1,7 +1,4 @@
 """ Class that manages dns lookup """
-import sys
-from datetime import datetime
-
 from dns.resolver import NoAnswer, query
 
 from servertools.common.misc_functions import askforhost, clean_console

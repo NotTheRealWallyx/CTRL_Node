@@ -3,7 +3,11 @@ import socket
 import sys
 from datetime import datetime
 
-from servertools.common.misc_functions import askforhost, clean_console
+from servertools.common.misc_functions import (
+    askforhost,
+    clean_console,
+    show_port_open_or_close,
+)
 from servertools.variables.globals import COMMON_PORTS, TERMINAL_PROMPT
 from servertools.variables.logos import SCAN_PORTS_LOGO
 
@@ -127,10 +131,10 @@ class ScanPorts:
         for port in COMMON_PORTS:
             self.check_port_and_call_for_result(host, port)
 
-    def check_port_and_call_for_result(self, host, port, silence = False):
+    def check_port_and_call_for_result(self, host, port, silence=False):
         """
             Checks the given port and calls for the print result function.
-            
+
             Arguments:
                 host {str}: Host to scan
                 port {int}: The scanned port
@@ -141,24 +145,6 @@ class ScanPorts:
         sock.settimeout(1)
         result = sock.connect_ex((host, port))
         sock.settimeout(None)
-        self.show_port_open_or_close(result, port, silence)
+        show_port_open_or_close(result, port, silence)
         sys.stdout.flush()
         sock.close()
-
-    def show_port_open_or_close(self, result: int, port: int, silence: bool = False):
-        """
-            Depending on the response parsed to the function prints if the
-            port is open or closed, the closed ones can be silenced with the
-            True flag.
-
-            Arguments:
-                result {int}: The result of the socket function
-                port {int}: The scanned port
-                silence {bool}: The flag to make close ports not to show
-        """
-        if result == 0:
-            print(f"Port {port}: 	 Open")
-        else:
-            if not silence:
-                print(f"Port {port}: 	 Close")
-
