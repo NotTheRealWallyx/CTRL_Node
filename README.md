@@ -30,11 +30,6 @@ To keep the application with a standard we use the following tools:
 
 We use [SemVer](http://semver.org/) for versioning.
 
-## TODO
-* [x] Improve naming [#8](https://github.com/sWallyx/server-tools/issues/8)[#7](https://github.com/sWallyx/server-tools/issues/7) and structure [#6](https://github.com/sWallyx/server-tools/issues/6)
-* [x] Remove duplicate code [#9](https://github.com/sWallyx/server-tools/issues/9)
-* [ ] Think more tools to add
-
 ## Licence
 
 [MIT - Licence](LICENSE)
