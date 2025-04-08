@@ -1,7 +1,6 @@
 """ File common used functions """
 from subprocess import run
-
-import pkg_resources
+from importlib.metadata import version as get_version
 
 
 def clean_console():
@@ -26,7 +25,7 @@ def askforhost() -> str:
 
 def version():
     """ Shows the version of the application on the terminal """
-    application_version = pkg_resources.require("ctrl_node")[0].version
+    application_version = get_version("ctrl-node")
     print(f"You are running version {application_version} ")
 
 
