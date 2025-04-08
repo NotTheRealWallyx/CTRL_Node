@@ -2,29 +2,34 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ca70f4341eb04084b8beb5515fdd38c8)](https://app.codacy.com/manual/mikelsmartinez/server-tools?utm_source=github.com&utm_medium=referral&utm_content=sWallyx/server-tools&utm_campaign=Badge_Grade_Dashboard)
 
+![GitBlend image](assets/images/CTRL_Node.png)
+
 Scan the ports of your server or get the DNS records with this small scripts.
 
 ## Installation
 
 Clone the repository from Github with:
 
-``` shell
+```shell
 git clone https://github.com/sWallyx/server-tools.git
 ```
+
 Run the installation script:
 
-``` shell
+```shell
 python setup.py install
 ```
 
 ## Tools used
 
 ### Format
+
 To keep the application with a standard we use the following tools:
-* [Codacy](https://www.codacy.com)
-* [Pylint](https://www.pylint.org)
-* [isort](https://timothycrosley.github.io/isort/)
-* [Black](https://black.readthedocs.io/en/stable/)
+
+- [Codacy](https://www.codacy.com)
+- [Pylint](https://www.pylint.org)
+- [isort](https://timothycrosley.github.io/isort/)
+- [Black](https://black.readthedocs.io/en/stable/)
 
 ### Versioning
 
