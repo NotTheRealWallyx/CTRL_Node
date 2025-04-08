@@ -1,9 +1,9 @@
 """ Class that manages dns lookup """
 from dns.resolver import NoAnswer, query
 
-from servertools.common.misc_functions import askforhost, clean_console
-from servertools.variables.globals import TERMINAL_PROMPT
-from servertools.variables.logos import DNS_LOGO
+from ctrl_node.common.misc_functions import askforhost, clean_console
+from ctrl_node.variables.globals import TERMINAL_PROMPT
+from ctrl_node.variables.logos import DNS_LOGO
 
 
 class DnsScan:

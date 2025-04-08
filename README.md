@@ -36,7 +36,7 @@ python setup.py install
 Run the application with:
 
 ```shell
-python -m servertools
+python -m ctrl_node
 ```
 
 ### Menu Options

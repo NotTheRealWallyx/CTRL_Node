@@ -1,4 +1,4 @@
-TERMINAL_PROMPT = "servertools ~$ "
+TERMINAL_PROMPT = "ctrl_node ~$ "
 
 COMMON_PORTS = [
     20,

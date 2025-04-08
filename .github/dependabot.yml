@@ -6,8 +6,8 @@ updates:
     interval: daily
   open-pull-requests-limit: 10
   reviewers:
-  - sWallyx
+  - NotTheRealWallyx
   assignees:
-  - sWallyx
+  - NotTheRealWallyx
   labels:
   - dependencies

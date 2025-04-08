@@ -1,12 +1,12 @@
 """ Main file for the application """
 import sys
 
-from servertools.common.misc_functions import clean_console, version
-from servertools.common.modules.dns import DnsScan
-from servertools.common.modules.host_to_ip import HostToIp
-from servertools.common.modules.ports import ScanPorts
-from servertools.variables.globals import TERMINAL_PROMPT
-from servertools.variables.logos import SERVER_TOOLS_LOGO
+from ctrl_node.common.misc_functions import clean_console, version
+from ctrl_node.common.modules.dns import DnsScan
+from ctrl_node.common.modules.host_to_ip import HostToIp
+from ctrl_node.common.modules.ports import ScanPorts
+from ctrl_node.variables.globals import TERMINAL_PROMPT
+from ctrl_node.variables.logos import SERVER_TOOLS_LOGO
 
 
 class ServerTools:

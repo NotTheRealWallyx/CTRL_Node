@@ -1,9 +1,9 @@
 """ Class that manages dns lookup """
 import socket
 
-from servertools.common.misc_functions import clean_console
-from servertools.variables.globals import TERMINAL_PROMPT
-from servertools.variables.logos import HOST_TO_IP_LOGO
+from ctrl_node.common.misc_functions import clean_console
+from ctrl_node.variables.globals import TERMINAL_PROMPT
+from ctrl_node.variables.logos import HOST_TO_IP_LOGO
 
 
 class HostToIp:

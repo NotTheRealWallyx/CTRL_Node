@@ -26,7 +26,7 @@ def askforhost() -> str:
 
 def version():
     """ Shows the version of the application on the terminal """
-    application_version = pkg_resources.require("servertools")[0].version
+    application_version = pkg_resources.require("ctrl_node")[0].version
     print(f"You are running version {application_version} ")
 
 
