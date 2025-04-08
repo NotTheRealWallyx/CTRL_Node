@@ -19,7 +19,7 @@ pyfiglet = "^1.0.2"
 pytest = "*"
 
 [tool.poetry.scripts]
-CTRL_Node = "ctrl_node.__main__:main"
+CTRL_Node = "ctrl_node.ctrl_node:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
