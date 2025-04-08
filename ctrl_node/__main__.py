@@ -7,9 +7,10 @@ from ctrl_node.common.modules.host_to_ip import HostToIp
 from ctrl_node.common.modules.ports import ScanPorts
 from ctrl_node.variables.globals import TERMINAL_PROMPT
 from ctrl_node.variables.logos import SERVER_TOOLS_LOGO
+from ctrl_node.common.utils import display_scan_ports_header
 
 
-class ServerTools:
+class CTRL_Node:
     """ Main class for the application """
 
     def __init__(self):
@@ -41,7 +42,7 @@ class ServerTools:
         """
         wrong_option = False
         if option == "1":
-            ScanPorts()
+            run_port_scan()
         elif option == "2":
             DnsScan()
         elif option == "3":
@@ -68,6 +69,12 @@ class ServerTools:
         input("That option does not exit, click return to go back.")
         self.__init__()
 
+def run_port_scan():
+    """ Run the port scan """
+    clean_console()
+    display_scan_ports_header()
+    scan = ScanPorts()
+    scan.scan_all_ports()
 
 def main():
-    ServerTools()
+    CTRL_Node()

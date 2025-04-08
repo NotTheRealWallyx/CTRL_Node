@@ -15,7 +15,6 @@ def askforhost() -> str:
     Returns:
         str: input entered by user
     """
-    clean_console()
 
     # Ask for input
     remote_server = input("Enter a remote host to scan: ")
@@ -29,7 +28,7 @@ def version():
     print(f"You are running version {application_version} ")
 
 
-def show_port_open_or_close(self, result: int, port: int, silence: bool = False):
+def show_port_open_or_close(result: int, port: int, silence: bool = False):
     """
         Depending on the response parsed to the function prints if the
         port is open or closed, the closed ones can be silenced with the

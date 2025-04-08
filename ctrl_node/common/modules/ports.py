@@ -10,141 +10,42 @@ from ctrl_node.common.misc_functions import (
 )
 from ctrl_node.variables.globals import COMMON_PORTS, TERMINAL_PROMPT
 from ctrl_node.variables.logos import SCAN_PORTS_LOGO
+from ctrl_node.common.modules.utils import get_host
 
 
 class ScanPorts:
-    def __init__(self):
-        """
-            Clears the console and shows the menu to ask the user
-            to select an option.
-        """
-        clean_console()
-        print(
-            SCAN_PORTS_LOGO
-            + """
-         1 - All ports
-         2 - Common ports
-         0 - Main meu
-        """
-        )
+    """ Class to scan ports of a remote server """
 
-        user_option = input(TERMINAL_PROMPT)
-        self.execute_menu(user_option)
-
-    def execute_menu(self, option: int):
+    def __init__(self, host=None):
         """
-            Executes the menu of the class.
+            Initializes the class with the host to scan.
 
             Arguments:
-                option {int}: User selected option
+                host {str}: Optional host to scan. If not provided, it will default to None.
         """
-        back_menu = False
-        wrong_option = False
-        if option == "1":
-            self.scan_ports(False)
-        elif option == "2":
-            self.scan_ports()
-        elif option == "0":
-            back_menu = True
-        else:
-            wrong_option = True
+        self.host = host or get_host()
+        self.remote_server_ip = socket.gethostbyname(self.host)
 
-        if wrong_option:
-            self.try_again()
-        elif back_menu:
-            pass
-        else:
-            self.completed()
-
-    def completed(self):
-        """ Shows the complete message and calls back the class """
-        input("\nCompleted, click return to go back.")
-        self.__init__()
-
-    def try_again(self):
-        """ Shows the error message and calls back the class """
-        input("That option does not exit, click return to go back.")
-        self.__init__()
-
-    def scan_ports(self, common: bool = True):
-        """
-            Calls for the scan ports function, it will call for only
-            the common ones or first 1024 ports depending on the parameter.
-            
-            Arguments:
-                common {bool}: Scan common ports only, True by default
-        """
-        remote_server = askforhost()
-        remote_server_address = socket.gethostbyname(remote_server)
-
-        print("-" * 60)
-        print(f"Scanning remote host {remote_server_address}")
-        print("Please wait, this may take a while")
-        print("You can cancel anytime pressing Ctrl+C")
-        print("-" * 60)
-
-        start_time = datetime.now()
-
-        try:
-            if common:
-                self.common_port_scan(remote_server_address)
-            else:
-                self.scan_all_ports(remote_server_address)
-
-        except KeyboardInterrupt:
-            print("You pressed Ctrl+C")
-            sys.exit()
-
-        except socket.gaierror:
-            print("Hostname could not be resolved. Exiting")
-            sys.exit()
-
-        except socket.error:
-            print("Couldn't connect to server")
-            sys.exit()
-
-        end_time = datetime.now()
-
-        total = end_time - start_time
-
-        print("Scanning Completed in: ", total)
-
-    def scan_all_ports(self, host):
-        """
-            This will scan only the first 1024, from 1 to 1024 and will print just the
-            open ones. Using the socket module.
-
-            Arguments:
-                host {str}: The IP of the server to check with socket
-        """
+    def scan_all_ports(self):
+        """ Scans all ports of the remote server """
+        print(f"Scanning all ports on {self.host} ({self.remote_server_ip})")
         for port in range(1, 1025):
-            self.check_port_and_call_for_result(host, port, True)
+            self.check_port(port)
 
-    def common_port_scan(self, host):
-        """
-            Scans the common ports of one host, using the socket module.
-
-            Arguments:
-                host {str}: The IP of the server to check with socket
-        """
-
+    def common_port_scan(self):
+        """ Scans common ports of the remote server """
+        print(f"Scanning common ports on {self.host} ({self.remote_server_ip})")
         for port in COMMON_PORTS:
-            self.check_port_and_call_for_result(host, port)
+            self.check_port(port)
 
-    def check_port_and_call_for_result(self, host, port, silence=False):
+    def check_port(self, port):
         """
-            Checks the given port and calls for the print result function.
+            Checks if a port is open or closed.
 
             Arguments:
-                host {str}: Host to scan
-                port {int}: The scanned port
-                silence {bool}: The flag to make close ports not to show
-
+                port {int}: Port to check
         """
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(1)
-        result = sock.connect_ex((host, port))
-        sock.settimeout(None)
-        show_port_open_or_close(result, port, silence)
-        sys.stdout.flush()
-        sock.close()
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+            sock.settimeout(1)
+            result = sock.connect_ex((self.remote_server_ip, port))
+            show_port_open_or_close(result, port)
