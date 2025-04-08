@@ -1,7 +1,14 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from ctrl_node.common.utils import display_scan_ports_header, askforhost, version, clean_console, execute_clear_command
+from ctrl_node.common.utils import (
+    display_scan_ports_header,
+    askforhost,
+    version,
+    clean_console,
+    execute_clear_command,
+)
 from ctrl_node.variables.logos import SCAN_PORTS_LOGO
+
 
 class TestUtils(unittest.TestCase):
     @patch("builtins.print")
@@ -26,6 +33,7 @@ class TestUtils(unittest.TestCase):
         version()
         mock_get_version.assert_called_once_with("ctrl-node")
         mock_print.assert_called_with("You are running version 1.0.0 ")
+
 
 if __name__ == "__main__":
     unittest.main()

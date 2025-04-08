@@ -2,16 +2,19 @@ from ctrl_node.variables.logos import SCAN_PORTS_LOGO
 from subprocess import run
 from importlib.metadata import version as get_version
 
+
 def display_scan_ports_header():
-    """ Displays the SCAN_PORTS_LOGO header """
+    """Displays the SCAN_PORTS_LOGO header"""
     print(SCAN_PORTS_LOGO)
 
+
 def clean_console():
-    """ Clean the console in a secure way """
+    """Clean the console in a secure way"""
     execute_clear_command()
 
+
 def execute_clear_command():
-    """ Executes the clear command """
+    """Executes the clear command"""
     run(["/usr/bin/clear"], shell=False, check=True)
 
 
@@ -30,7 +33,6 @@ def askforhost() -> str:
 
 
 def version():
-    """ Shows the version of the application on the terminal """
+    """Shows the version of the application on the terminal"""
     application_version = get_version("ctrl-node")
     print(f"You are running version {application_version} ")
-
