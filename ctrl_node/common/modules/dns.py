@@ -1,7 +1,7 @@
 """ Class that manages dns lookup """
 from dns.resolver import NoAnswer, query
 
-from ctrl_node.common.misc_functions import askforhost, clean_console
+from ctrl_node.common.utils import askforhost, clean_console
 from ctrl_node.variables.globals import TERMINAL_PROMPT
 from ctrl_node.variables.logos import DNS_LOGO
 

@@ -1,7 +1,7 @@
 """ Class that manages dns lookup """
 import socket
 
-from ctrl_node.common.misc_functions import clean_console
+from ctrl_node.common.utils import clean_console
 from ctrl_node.variables.globals import TERMINAL_PROMPT
 from ctrl_node.variables.logos import HOST_TO_IP_LOGO
 

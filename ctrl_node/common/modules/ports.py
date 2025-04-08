@@ -3,14 +3,13 @@ import socket
 import sys
 from datetime import datetime
 
-from ctrl_node.common.misc_functions import (
+from ctrl_node.common.utils import (
     askforhost,
     clean_console,
-    show_port_open_or_close,
 )
 from ctrl_node.variables.globals import COMMON_PORTS, TERMINAL_PROMPT
 from ctrl_node.variables.logos import SCAN_PORTS_LOGO
-from ctrl_node.common.modules.utils import get_host
+from ctrl_node.common.modules.utils import get_host, show_port_open_or_close
 
 
 class ScanPorts:

@@ -1,7 +1,7 @@
 """ Main file for the application """
 import sys
 
-from ctrl_node.common.misc_functions import clean_console, version
+from ctrl_node.common.utils import clean_console, version
 from ctrl_node.common.modules.dns import DnsScan
 from ctrl_node.common.modules.host_to_ip import HostToIp
 from ctrl_node.common.modules.ports import ScanPorts
