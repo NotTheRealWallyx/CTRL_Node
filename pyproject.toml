@@ -11,8 +11,9 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.7"
+python = ">=3.9"
 dnspython = "*"
+pyfiglet = "^1.0.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "*"
