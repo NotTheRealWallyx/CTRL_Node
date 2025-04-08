@@ -8,6 +8,10 @@ def display_scan_ports_header():
 
 def clean_console():
     """ Clean the console in a secure way """
+    execute_clear_command()
+
+def execute_clear_command():
+    """ Executes the clear command """
     run(["/usr/bin/clear"], shell=False, check=True)
 
 
