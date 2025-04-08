@@ -11,7 +11,7 @@ Scan the ports of your server or get the DNS records with this small scripts.
 Clone the repository from Github with:
 
 ```shell
-git clone https://github.com/sWallyx/server-tools.git
+git clone git@github.com:NotTheRealWallyx/CTRL_Node.git
 ```
 
 Run the installation script:
