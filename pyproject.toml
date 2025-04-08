@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "CTRL_Node"
+version = "0.0.2"
+description = "Various tools for managing or checking servers"
+authors = ["NotTheRealWallyx"]
+keywords = ["python", "scripts", "server", "tools", "dns", "records"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+dnspython = "*"
+pyfiglet = "^1.0.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+black = "^25.1.0"
+
+[tool.poetry.scripts]
+CTRL_Node = "ctrl_node.ctrl_node:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+

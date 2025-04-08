@@ -1,30 +1,62 @@
-# Server tools
+# CTRL_Node
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ca70f4341eb04084b8beb5515fdd38c8)](https://app.codacy.com/manual/mikelsmartinez/server-tools?utm_source=github.com&utm_medium=referral&utm_content=sWallyx/server-tools&utm_campaign=Badge_Grade_Dashboard)
+[![CodeFactor](https://www.codefactor.io/repository/github/nottherealwallyx/ctrl_node/badge)](https://www.codefactor.io/repository/github/nottherealwallyx/ctrl_node)
+
+![GitBlend image](assets/images/CTRL_Node.png)
 
 Scan the ports of your server or get the DNS records with this small scripts.
+
+## Features
+
+- **Port Scanning**: Scan all ports or common ports of a remote server.
+- **DNS Lookup**: Retrieve DNS records such as MX, NS, A, AAAA, SOA, and TXT.
+- **Host to IP Conversion**: Convert a hostname to its corresponding IP address.
 
 ## Installation
 
 Clone the repository from Github with:
 
-``` shell
-git clone https://github.com/sWallyx/server-tools.git
+```shell
+git clone git@github.com:NotTheRealWallyx/CTRL_Node.git
 ```
+
 Run the installation script:
 
-``` shell
+```shell
 python setup.py install
 ```
+
+## Requirements
+
+- Python 3.x
+- `dnspython` library (automatically installed during setup)
+
+## Usage
+
+Run the application with:
+
+```shell
+python -m ctrl_node
+```
+
+### Menu Options
+
+1. **Scan Ports**: Choose to scan all ports or common ports of a remote server.
+2. **DNS Lookup**: Retrieve DNS records for a given domain.
+3. **Host to IP**: Convert a hostname to its IP address.
+4. **Show Application Version**: Display the current version of the application.
+5. **Exit**: Close the application.
 
 ## Tools used
 
 ### Format
+
 To keep the application with a standard we use the following tools:
-* [Codacy](https://www.codacy.com)
-* [Pylint](https://www.pylint.org)
-* [isort](https://timothycrosley.github.io/isort/)
-* [Black](https://black.readthedocs.io/en/stable/)
+
+- [Codacy](https://www.codacy.com)
+- [Pylint](https://www.pylint.org)
+- [isort](https://timothycrosley.github.io/isort/)
+- [Black](https://black.readthedocs.io/en/stable/)
 
 ### Versioning
 

@@ -1,21 +1,23 @@
-""" Main file for the application """
+"""Main file for the application"""
+
 import sys
 
-from servertools.common.misc_functions import clean_console, version
-from servertools.common.modules.dns import DnsScan
-from servertools.common.modules.host_to_ip import HostToIp
-from servertools.common.modules.ports import ScanPorts
-from servertools.variables.globals import TERMINAL_PROMPT
-from servertools.variables.logos import SERVER_TOOLS_LOGO
+from ctrl_node.common.utils import clean_console, version
+from ctrl_node.common.modules.dns import DnsScan
+from ctrl_node.common.modules.host_to_ip import HostToIp
+from ctrl_node.common.modules.ports import ScanPorts
+from ctrl_node.variables.globals import TERMINAL_PROMPT
+from ctrl_node.variables.logos import SERVER_TOOLS_LOGO
+from ctrl_node.common.utils import display_scan_ports_header
 
 
-class ServerTools:
-    """ Main class for the application """
+class CTRL_Node:
+    """Main class for the application"""
 
     def __init__(self):
         """
-            Clears the console and shows the menu to ask the user
-            to select an option.
+        Clears the console and shows the menu to ask the user
+        to select an option.
         """
         clean_console()
         print(
@@ -34,14 +36,14 @@ class ServerTools:
 
     def execute_menu(self, option: int):
         """
-            Executes the menu of the class.
+        Executes the menu of the class.
 
-            Arguments:
-                option {int}: User selected option
+        Arguments:
+            option {int}: User selected option
         """
         wrong_option = False
         if option == "1":
-            ScanPorts()
+            run_port_scan()
         elif option == "2":
             DnsScan()
         elif option == "3":
@@ -59,15 +61,23 @@ class ServerTools:
             self.completed()
 
     def completed(self):
-        """ Shows the complete message and calls back the class """
+        """Shows the complete message and calls back the class"""
         input("Completed, click return to go back.")
         self.__init__()
 
     def try_again(self):
-        """ Shows the error message and calls back the class """
+        """Shows the error message and calls back the class"""
         input("That option does not exit, click return to go back.")
         self.__init__()
 
 
-if __name__ == "__main__":
-    ServerTools()
+def run_port_scan():
+    """Run the port scan"""
+    clean_console()
+    display_scan_ports_header()
+    scan = ScanPorts()
+    scan.scan_all_ports()
+
+
+def main():
+    CTRL_Node()
