@@ -6,6 +6,12 @@
 
 Scan the ports of your server or get the DNS records with this small scripts.
 
+## Features
+
+- **Port Scanning**: Scan all ports or common ports of a remote server.
+- **DNS Lookup**: Retrieve DNS records such as MX, NS, A, AAAA, SOA, and TXT.
+- **Host to IP Conversion**: Convert a hostname to its corresponding IP address.
+
 ## Installation
 
 Clone the repository from Github with:
@@ -19,6 +25,27 @@ Run the installation script:
 ```shell
 python setup.py install
 ```
+
+## Requirements
+
+- Python 3.x
+- `dnspython` library (automatically installed during setup)
+
+## Usage
+
+Run the application with:
+
+```shell
+python -m servertools
+```
+
+### Menu Options
+
+1. **Scan Ports**: Choose to scan all ports or common ports of a remote server.
+2. **DNS Lookup**: Retrieve DNS records for a given domain.
+3. **Host to IP**: Convert a hostname to its IP address.
+4. **Show Application Version**: Display the current version of the application.
+5. **Exit**: Close the application.
 
 ## Tools used
 

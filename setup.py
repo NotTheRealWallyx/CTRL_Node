@@ -1,8 +1,8 @@
-""" Setup configuration for servertools """
+""" Setup configuration for CTRL_Node """
 from setuptools import find_packages, setup
 
 setup(
-    name="servertools",
+    name="CTRL_Node",
     version="0.0.2",
     description="Various tools for managing or checking servers",
     author="sWallyx",
