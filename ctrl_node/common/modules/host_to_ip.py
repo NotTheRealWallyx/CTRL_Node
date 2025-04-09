@@ -2,7 +2,7 @@
 
 import socket
 
-from ctrl_node.common.utils import clean_console
+from ctrl_node.common.utils import askforhost
 from ctrl_node.variables.globals import TERMINAL_PROMPT
 from ctrl_node.variables.logos import HOST_TO_IP_LOGO
 
@@ -12,9 +12,6 @@ class HostToIp:
         """
         Initializes the class with the host to retrieve the IP.
         """
-        clean_console()
-        print(HOST_TO_IP_LOGO)
-
         self.host = host or askforhost()
 
     def get_ip_from_hostname(self):
