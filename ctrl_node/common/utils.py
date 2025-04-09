@@ -1,4 +1,4 @@
-from ctrl_node.variables.logos import SCAN_PORTS_LOGO
+from ctrl_node.variables.logos import SCAN_PORTS_LOGO, HOST_TO_IP_LOGO
 from subprocess import run
 from importlib.metadata import version as get_version
 
