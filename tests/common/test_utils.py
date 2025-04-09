@@ -25,7 +25,7 @@ class TestUtils(unittest.TestCase):
     def test_askforhost(self, mock_input):
         result = askforhost()
         self.assertEqual(result, "localhost")
-        mock_input.assert_called_once_with("Enter a remote host to scan: ")
+        mock_input.assert_called_once_with("Enter host name: ")
 
     @patch("ctrl_node.common.utils.get_version", return_value="1.0.0")
     @patch("builtins.print")

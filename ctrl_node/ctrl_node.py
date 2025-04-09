@@ -8,7 +8,7 @@ from ctrl_node.common.modules.host_to_ip import HostToIp
 from ctrl_node.common.modules.ports import ScanPorts
 from ctrl_node.variables.globals import TERMINAL_PROMPT
 from ctrl_node.variables.logos import SERVER_TOOLS_LOGO
-from ctrl_node.common.utils import display_scan_ports_header
+from ctrl_node.common.utils import display_scan_ports_header, display_host_to_ip_header
 
 
 class CTRL_Node:
@@ -47,7 +47,7 @@ class CTRL_Node:
         elif option == "2":
             DnsScan()
         elif option == "3":
-            HostToIp()
+            run_host_to_ip()
         elif option == "4":
             run_version()
         elif option == "0":
@@ -77,6 +77,14 @@ def run_port_scan():
     display_scan_ports_header()
     scan = ScanPorts()
     scan.scan_all_ports()
+
+
+def run_host_to_ip():
+    """Run the port scan"""
+    clean_console()
+    display_host_to_ip_header()
+    hostToIp = HostToIp()
+    hostToIp.get_ip_from_hostname()
 
 
 def run_version():

@@ -8,26 +8,19 @@ from ctrl_node.variables.logos import HOST_TO_IP_LOGO
 
 
 class HostToIp:
-    def __init__(self):
+    def __init__(self, host=None):
         """
-        Clears the console and shows the menu to ask the user
-        to select an option.
+        Initializes the class with the host to retrieve the IP.
         """
         clean_console()
-        print(
-            HOST_TO_IP_LOGO
-            + """
-         Insert the host name
-        """
-        )
+        print(HOST_TO_IP_LOGO)
 
-        hostname = input(TERMINAL_PROMPT)
-        self.get_ip_from_hostname(hostname)
+        self.host = host or askforhost()
 
-    def get_ip_from_hostname(self, hostname):
-        print(f"The IP for {hostname} is {socket.gethostbyname(hostname)}")
+    def get_ip_from_hostname(self):
+        print(f"The IP for {self.host} is {socket.gethostbyname(self.host)}")
         self.complete()
 
     def complete(self):
         """Shows the complete message and calls back the class"""
-        input("\nCompleted, click return to go back.")
+        input("\nCompleted, press enter to go back.")
