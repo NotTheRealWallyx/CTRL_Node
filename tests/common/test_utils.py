@@ -4,7 +4,6 @@ from ctrl_node.common.utils import (
     display_scan_ports_header,
     display_host_to_ip_header,
     askforhost,
-    version,
     clean_console,
     execute_clear_command,
 )

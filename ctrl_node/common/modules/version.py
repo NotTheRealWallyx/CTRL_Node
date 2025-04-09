@@ -2,9 +2,8 @@
 
 import socket
 
-from ctrl_node.common.utils import askforhost
-from ctrl_node.variables.globals import TERMINAL_PROMPT
-from ctrl_node.variables.logos import HOST_TO_IP_LOGO
+
+from ctrl_node.common.utils import get_version
 
 
 class Version:
