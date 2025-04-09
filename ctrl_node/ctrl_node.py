@@ -49,7 +49,7 @@ class CTRL_Node:
         elif option == "3":
             HostToIp()
         elif option == "4":
-            version()
+            run_version()
         elif option == "0":
             sys.exit()
         else:
@@ -62,12 +62,12 @@ class CTRL_Node:
 
     def completed(self):
         """Shows the complete message and calls back the class"""
-        input("Completed, click return to go back.")
+        input("Completed, press enter to go back.")
         self.__init__()
 
     def try_again(self):
         """Shows the error message and calls back the class"""
-        input("That option does not exit, click return to go back.")
+        input("That option does not exit, press enter to go back.")
         self.__init__()
 
 
@@ -77,6 +77,12 @@ def run_port_scan():
     display_scan_ports_header()
     scan = ScanPorts()
     scan.scan_all_ports()
+
+
+def run_version():
+    """Run the port scan"""
+    clean_console()
+    version()
 
 
 def main():
