@@ -37,7 +37,13 @@ def askforhost() -> str:
     return remote_server
 
 
-def version():
-    """Shows the version of the application on the terminal"""
-    application_version = get_version("ctrl-node")
-    print(f"You are running version {application_version} ")
+def completed(self):
+    """Shows the complete message and calls back the class"""
+    input("Completed, press enter to go back.")
+    self.__init__()
+
+
+def try_again(self):
+    """Shows the error message and calls back the class"""
+    input("That option does not exit, press enter to go back.")
+    self.__init__()

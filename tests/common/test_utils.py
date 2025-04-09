@@ -33,13 +33,6 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(result, "localhost")
         mock_input.assert_called_once_with("Enter host name: ")
 
-    @patch("ctrl_node.common.utils.get_version", return_value="1.0.0")
-    @patch("builtins.print")
-    def test_version(self, mock_print, mock_get_version):
-        version()
-        mock_get_version.assert_called_once_with("ctrl-node")
-        mock_print.assert_called_with("You are running version 1.0.0 ")
-
 
 if __name__ == "__main__":
     unittest.main()

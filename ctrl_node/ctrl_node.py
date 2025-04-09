@@ -1,14 +1,18 @@
-"""Main file for the application"""
-
 import sys
 
-from ctrl_node.common.utils import clean_console, version
+from ctrl_node.common.utils import clean_console
 from ctrl_node.common.modules.dns import DnsScan
 from ctrl_node.common.modules.host_to_ip import HostToIp
 from ctrl_node.common.modules.ports import ScanPorts
+from ctrl_node.common.modules.version import Version
 from ctrl_node.variables.globals import TERMINAL_PROMPT
 from ctrl_node.variables.logos import SERVER_TOOLS_LOGO
-from ctrl_node.common.utils import display_scan_ports_header, display_host_to_ip_header
+from ctrl_node.common.utils import (
+    display_scan_ports_header,
+    display_host_to_ip_header,
+    try_again,
+    completed,
+)
 
 
 class CTRL_Node:
@@ -56,19 +60,9 @@ class CTRL_Node:
             wrong_option = True
 
         if wrong_option:
-            self.try_again()
+            try_again()
         else:
-            self.completed()
-
-    def completed(self):
-        """Shows the complete message and calls back the class"""
-        input("Completed, press enter to go back.")
-        self.__init__()
-
-    def try_again(self):
-        """Shows the error message and calls back the class"""
-        input("That option does not exit, press enter to go back.")
-        self.__init__()
+            completed()
 
 
 def run_port_scan():
@@ -90,7 +84,7 @@ def run_host_to_ip():
 def run_version():
     """Run the port scan"""
     clean_console()
-    version()
+    Version()
 
 
 def main():
