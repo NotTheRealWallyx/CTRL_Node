@@ -1,0 +1,7 @@
+name: CI Entrypoint
+
+on: push
+
+jobs:
+  run-tests:
+    uses: ./.github/workflows/check_test.yml
