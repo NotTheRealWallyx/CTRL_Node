@@ -18,7 +18,7 @@ class DnsScan:
             DNS_LOGO
             + """
          1 - Scan host
-         0 - Main meu
+         0 - Main menu
         """
         )
 
