@@ -26,11 +26,12 @@ class TestUtils(unittest.TestCase):
         clean_console()
         mock_execute_clear_command.assert_called_once()
 
-    @patch("builtins.input", return_value="localhost")
-    def test_askforhost(self, mock_input):
+    @patch("questionary.text")
+    def test_askforhost(self, mock_questionary_text):
+        mock_questionary_text.return_value.ask.return_value = "localhost"
         result = askforhost()
         self.assertEqual(result, "localhost")
-        mock_input.assert_called_once_with("Enter host name: ")
+        mock_questionary_text.return_value.ask.assert_called_once()
 
 
 if __name__ == "__main__":
