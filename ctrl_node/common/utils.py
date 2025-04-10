@@ -35,15 +35,3 @@ def askforhost() -> str:
     remote_server = input("Enter host name: ")
 
     return remote_server
-
-
-def completed(self):
-    """Shows the complete message and calls back the class"""
-    input("Completed, press enter to go back.")
-    self.__init__()
-
-
-def try_again(self):
-    """Shows the error message and calls back the class"""
-    input("That option does not exit, press enter to go back.")
-    self.__init__()

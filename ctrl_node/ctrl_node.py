@@ -10,8 +10,6 @@ from ctrl_node.variables.logos import MAIN_LOGO
 from ctrl_node.common.utils import (
     display_scan_ports_header,
     display_host_to_ip_header,
-    try_again,
-    completed,
 )
 
 
