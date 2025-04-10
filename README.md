@@ -11,6 +11,7 @@ Scan the ports of your server or get the DNS records with this small scripts.
 - **Port Scanning**: Scan all ports or common ports of a remote server.
 - **DNS Lookup**: Retrieve DNS records such as MX, NS, A, AAAA, SOA, and TXT.
 - **Host to IP Conversion**: Convert a hostname to its corresponding IP address.
+- **WHOIS Lookup**: Perform a WHOIS lookup for a given domain.
 
 ## Installation
 
