@@ -1,11 +1,9 @@
 import unittest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 from ctrl_node.common.utils import (
     askforhost,
     clean_console,
-    execute_clear_command,
 )
-from ctrl_node.variables.logos import SCAN_PORTS_LOGO, HOST_TO_IP_LOGO
 
 
 class TestUtils(unittest.TestCase):
