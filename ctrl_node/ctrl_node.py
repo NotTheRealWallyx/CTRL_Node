@@ -1,14 +1,12 @@
-"""Main file for the application"""
-
 import sys
+import questionary
 
-from ctrl_node.common.utils import clean_console, version
+from ctrl_node.common.utils import clean_console
 from ctrl_node.common.modules.dns import DnsScan
 from ctrl_node.common.modules.host_to_ip import HostToIp
 from ctrl_node.common.modules.ports import ScanPorts
-from ctrl_node.variables.globals import TERMINAL_PROMPT
-from ctrl_node.variables.logos import SERVER_TOOLS_LOGO
-from ctrl_node.common.utils import display_scan_ports_header
+from ctrl_node.common.modules.version import Version
+from ctrl_node.variables.logos import MAIN_LOGO
 
 
 class CTRL_Node:
@@ -19,64 +17,48 @@ class CTRL_Node:
         Clears the console and shows the menu to ask the user
         to select an option.
         """
-        clean_console()
-        print(
-            SERVER_TOOLS_LOGO
-            + """
-         1 - Scan ports
-         2 - DNS look up
-         3 - Host to IP
-         4 - Show application version
-         0 - Exit
+        while True:
+            clean_console()
+            print(MAIN_LOGO)
+            self.show_menu()
+
+    def show_menu(self):
         """
-        )
+        Displays the menu and handles user selection.
+        """
+        choice = questionary.select(
+            "What would you like to do?",
+            choices=[
+                "1 - Scan ports",
+                "2 - DNS look up",
+                "3 - Host to IP",
+                "4 - Show application version",
+                "0 - Exit",
+            ],
+        ).ask()
 
-        user_option = input(TERMINAL_PROMPT)
-        self.execute_menu(user_option)
+        self.execute_menu(choice)
 
-    def execute_menu(self, option: int):
+    def execute_menu(self, option: str):
         """
         Executes the menu of the class.
 
         Arguments:
-            option {int}: User selected option
+            option {str}: User selected option
         """
-        wrong_option = False
-        if option == "1":
-            run_port_scan()
-        elif option == "2":
-            DnsScan()
-        elif option == "3":
-            HostToIp()
-        elif option == "4":
-            version()
-        elif option == "0":
+        if option.startswith("1"):
+            scan = ScanPorts()
+            scan.scan_all_ports()
+        elif option.startswith("2"):
+            dns_scan = DnsScan()
+            dns_scan.scan_host()
+        elif option.startswith("3"):
+            host_to_ip = HostToIp()
+            host_to_ip.get_ip_from_hostname()
+        elif option.startswith("4"):
+            Version()
+        elif option.startswith("0"):
             sys.exit()
-        else:
-            wrong_option = True
-
-        if wrong_option:
-            self.try_again()
-        else:
-            self.completed()
-
-    def completed(self):
-        """Shows the complete message and calls back the class"""
-        input("Completed, click return to go back.")
-        self.__init__()
-
-    def try_again(self):
-        """Shows the error message and calls back the class"""
-        input("That option does not exit, click return to go back.")
-        self.__init__()
-
-
-def run_port_scan():
-    """Run the port scan"""
-    clean_console()
-    display_scan_ports_header()
-    scan = ScanPorts()
-    scan.scan_all_ports()
 
 
 def main():

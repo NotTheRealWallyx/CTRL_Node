@@ -1,16 +1,12 @@
 """Functions that have to do with port scanning"""
 
 import socket
-import sys
-from datetime import datetime
 
 from ctrl_node.common.utils import (
     askforhost,
-    clean_console,
 )
-from ctrl_node.variables.globals import COMMON_PORTS, TERMINAL_PROMPT
-from ctrl_node.variables.logos import SCAN_PORTS_LOGO
-from ctrl_node.common.modules.utils import get_host, show_port_open_or_close
+from ctrl_node.variables.globals import COMMON_PORTS
+from ctrl_node.common.modules.module_utils import show_port_open_or_close
 
 
 class ScanPorts:
@@ -23,7 +19,7 @@ class ScanPorts:
         Arguments:
             host {str}: Optional host to scan. If not provided, it will default to None.
         """
-        self.host = host or get_host()
+        self.host = host or askforhost()
         self.remote_server_ip = socket.gethostbyname(self.host)
 
     def scan_all_ports(self):

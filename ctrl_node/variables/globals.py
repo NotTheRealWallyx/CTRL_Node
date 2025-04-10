@@ -1,5 +1,3 @@
-TERMINAL_PROMPT = "ctrl_node ~$ "
-
 COMMON_PORTS = [
     20,
     21,

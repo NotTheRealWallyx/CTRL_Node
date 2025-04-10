@@ -14,10 +14,12 @@ classifiers = [
 python = ">=3.9"
 dnspython = "*"
 pyfiglet = "^1.0.2"
+questionary = "^2.1.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "*"
 black = "^25.1.0"
+pre-commit = "^4.2.0"
 
 [tool.poetry.scripts]
 CTRL_Node = "ctrl_node.ctrl_node:main"

@@ -1,6 +1,6 @@
 # CTRL_Node
 
-[![CodeFactor](https://www.codefactor.io/repository/github/nottherealwallyx/ctrl_node/badge)](https://www.codefactor.io/repository/github/nottherealwallyx/ctrl_node)
+[![Builds](https://github.com/NotTheRealWallyx/CTRL_Node/actions/workflows/ci_entrypoint.yml/badge.svg)](https://github.com/NotTheRealWallyx/CTRL_Node/actions/workflows/ci_entrypoint.yml) [![CodeFactor](https://www.codefactor.io/repository/github/nottherealwallyx/ctrl_node/badge)](https://www.codefactor.io/repository/github/nottherealwallyx/ctrl_node)
 
 ![GitBlend image](assets/images/CTRL_Node.png)
 
