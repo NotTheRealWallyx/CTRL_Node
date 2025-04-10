@@ -83,7 +83,7 @@ def run_host_to_ip():
 
 def run_version():
     """Run the version display"""
-    clean_console()
+    # clean_console()
     Version()
 
 
