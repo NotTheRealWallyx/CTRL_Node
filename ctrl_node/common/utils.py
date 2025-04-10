@@ -21,6 +21,3 @@ def askforhost() -> str:
     """
     remote_server = questionary.text("Enter host name:").ask()
     return remote_server
-
-
-x
