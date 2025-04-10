@@ -51,26 +51,26 @@ class CTRL_Node:
         Arguments:
             option {str}: User selected option
         """
-        if option == "1":
+        if option == "1 - Scan ports":
             scan = ScanPorts()
             scan.scan_all_ports()
-        elif option == "2":
+        elif option == "2 - DNS look up":
             dns_scan = DnsScan()
             dns_scan.scan_host()
-        elif option == "3":
+        elif option == "3 - Host to IP":
             host_to_ip = HostToIp()
             host_to_ip.get_ip_from_hostname()
-        elif option == "4":
+        elif option == "4 - Whois":
             whois = Whois()
             whois.fetch_domain_info()
             whois.display_domain_info()
-        elif option == "5":
+        elif option == "5 - Traceroute":
             traceroute = Traceroute()
             traceroute.traceroute_system()
-        elif option == "6":
+        elif option == "6 - Show application version":
             version = Version()
             version.display_version()
-        elif option == "0":
+        elif option == "0 - Exit":
             sys.exit()
 
 

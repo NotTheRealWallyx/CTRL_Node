@@ -1,3 +1,4 @@
+import shutil
 import subprocess
 
 import questionary
@@ -16,10 +17,16 @@ class Traceroute:
 
     def traceroute_system(self):
         """
-        Performs a traceroute for the given host.
+        Performs a traceroute to the given host using the system's traceroute command.
         """
+        traceroute_path = shutil.which("traceroute")
+        if not traceroute_path:
+            raise FileNotFoundError(
+                "The 'traceroute' command is not found in the system PATH."
+            )
+
         process = subprocess.Popen(
-            ["traceroute", self.host],
+            [traceroute_path, self.host],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
