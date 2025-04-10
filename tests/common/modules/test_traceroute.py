@@ -7,9 +7,12 @@ from ctrl_node.common.modules.traceroute import Traceroute
 
 
 class TestTraceroute(unittest.TestCase):
+    @patch("shutil.which")
     @patch("subprocess.Popen")
     @patch("questionary.text")
-    def test_traceroute_system(self, mock_questionary_text, mock_popen):
+    def test_traceroute_system(self, mock_questionary_text, mock_popen, mock_which):
+        mock_which.return_value = "/usr/sbin/traceroute"
+
         mock_process = MagicMock()
         mock_process.stdout = io.StringIO("line 1\nline 2\nline 3\n")
         mock_process.wait.return_value = None
@@ -21,7 +24,7 @@ class TestTraceroute(unittest.TestCase):
         traceroute_instance.traceroute_system()
 
         mock_popen.assert_called_once_with(
-            ["traceroute", "example.com"],
+            ["/usr/sbin/traceroute", "example.com"],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
