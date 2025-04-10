@@ -1,6 +1,4 @@
-from ctrl_node.variables.logos import SCAN_PORTS_LOGO, HOST_TO_IP_LOGO
 from subprocess import run
-from importlib.metadata import version as get_version
 import questionary
 
 
@@ -23,3 +21,6 @@ def askforhost() -> str:
     """
     remote_server = questionary.text("Enter host name:").ask()
     return remote_server
+
+
+x

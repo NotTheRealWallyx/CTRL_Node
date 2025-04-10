@@ -8,8 +8,7 @@ from ctrl_node.common.utils import (
     askforhost,
     clean_console,
 )
-from ctrl_node.variables.globals import COMMON_PORTS, TERMINAL_PROMPT
-from ctrl_node.variables.logos import SCAN_PORTS_LOGO
+from ctrl_node.variables.globals import COMMON_PORTS
 from ctrl_node.common.modules.module_utils import show_port_open_or_close
 
 
