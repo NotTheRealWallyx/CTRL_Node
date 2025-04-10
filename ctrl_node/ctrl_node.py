@@ -59,9 +59,12 @@ class CTRL_Node:
             host_to_ip = HostToIp()
             host_to_ip.get_ip_from_hostname()
         elif option.startswith("4"):
-            Whois()
+            whois = Whois()
+            whois.fetch_domain_info()
+            whois.display_domain_info()
         elif option.startswith("5"):
-            Version()
+            version = Version()
+            version.display_version()
         elif option.startswith("0"):
             sys.exit()
 

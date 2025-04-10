@@ -8,7 +8,9 @@ from ctrl_node.variables.globals import COMMON_PORTS
 
 
 class ScanPorts:
-    """Class to scan ports of a remote server"""
+    """
+    Class that scans ports of a remote server.
+    """
 
     def __init__(self, host=None):
         """
@@ -21,13 +23,17 @@ class ScanPorts:
         self.remote_server_ip = socket.gethostbyname(self.host)
 
     def scan_all_ports(self):
-        """Scans all ports of the remote server"""
+        """
+        Scans all ports of the remote server.
+        """
         print(f"Scanning all ports on {self.host} ({self.remote_server_ip})")
         for port in range(1, 1025):
             self.check_port(port)
 
     def common_port_scan(self):
-        """Scans common ports of the remote server"""
+        """
+        Scans common ports of the remote server.
+        """
         print(f"Scanning common ports on {self.host} ({self.remote_server_ip})")
         for port in COMMON_PORTS:
             self.check_port(port)
