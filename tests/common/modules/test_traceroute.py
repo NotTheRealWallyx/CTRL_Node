@@ -33,3 +33,17 @@ class TestTraceroute(unittest.TestCase):
         expected_output = "line 1\nline 2\nline 3\n"
         printed_output = mock_process.stdout.getvalue()
         self.assertEqual(printed_output, expected_output)
+
+    @patch("shutil.which")
+    @patch("questionary.text")
+    def test_traceroute_system_command_not_found(
+        self, mock_questionary_text, mock_which
+    ):
+        mock_which.return_value = None
+
+        mock_questionary_text.return_value.ask.return_value = None
+
+        traceroute_instance = Traceroute(host="example.com")
+
+        with self.assertRaises(FileNotFoundError):
+            traceroute_instance.traceroute_system()
