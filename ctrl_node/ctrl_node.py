@@ -51,9 +51,11 @@ class CTRL_Node:
             option {str}: User selected option
         """
         if option.startswith("1"):
-            run_port_scan()
+            scan = ScanPorts()
+            scan.scan_all_ports()
         elif option.startswith("2"):
-            DnsScan()
+            dnsScan = DnsScan()
+            dnsScan.scan_host()
         elif option.startswith("3"):
             hostToIp = HostToIp()
             hostToIp.get_ip_from_hostname()
@@ -64,14 +66,6 @@ class CTRL_Node:
         else:
             print("Invalid option. Please try again.")
             try_again(self)
-
-
-def run_port_scan():
-    """Run the port scan"""
-    clean_console()
-    display_scan_ports_header()
-    scan = ScanPorts()
-    scan.scan_all_ports()
 
 
 def main():
