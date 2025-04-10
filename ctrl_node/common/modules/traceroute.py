@@ -36,5 +36,10 @@ class Traceroute:
             print(line, end="")
 
         process.wait()
+        if process.returncode != 0:
+            error_message = process.stderr.read()
+            print(f"Error: Traceroute command failed with exit code {process.returncode}.")
+            print(f"Details: {error_message}")
+            return
 
         questionary.text("Press Enter to return to the menu...").ask()
