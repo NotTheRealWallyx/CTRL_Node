@@ -22,12 +22,6 @@ class TestHostToIp(unittest.TestCase):
             mock_gethostbyname.assert_called_once_with("example.com")
             mock_print.assert_any_call("The IP for example.com is 93.184.216.34")
 
-    @patch("builtins.input", return_value="")
-    def test_complete(self, mock_input):
-        instance = HostToIp(host="example.com")
-        instance.complete()
-        mock_input.assert_called_once_with("\nCompleted, press enter to go back.")
-
 
 if __name__ == "__main__":
     unittest.main()

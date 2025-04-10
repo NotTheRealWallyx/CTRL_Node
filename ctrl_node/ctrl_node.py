@@ -55,7 +55,8 @@ class CTRL_Node:
         elif option.startswith("2"):
             DnsScan()
         elif option.startswith("3"):
-            run_host_to_ip()
+            hostToIp = HostToIp()
+            hostToIp.get_ip_from_hostname()
         elif option.startswith("4"):
             Version()
         elif option.startswith("0"):
@@ -71,14 +72,6 @@ def run_port_scan():
     display_scan_ports_header()
     scan = ScanPorts()
     scan.scan_all_ports()
-
-
-def run_host_to_ip():
-    """Run the host-to-IP conversion"""
-    clean_console()
-    display_host_to_ip_header()
-    hostToIp = HostToIp()
-    hostToIp.get_ip_from_hostname()
 
 
 def main():
