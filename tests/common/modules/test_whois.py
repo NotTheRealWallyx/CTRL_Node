@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 from ctrl_node.common.modules.whois import Whois
 
