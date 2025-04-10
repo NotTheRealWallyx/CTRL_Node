@@ -1,5 +1,6 @@
 import unittest
 from unittest.mock import patch
+
 from ctrl_node.common.modules.host_to_ip import HostToIp
 
 

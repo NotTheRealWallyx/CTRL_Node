@@ -2,11 +2,9 @@
 
 import socket
 
-from ctrl_node.common.utils import (
-    askforhost,
-)
-from ctrl_node.variables.globals import COMMON_PORTS
 from ctrl_node.common.modules.module_utils import show_port_open_or_close
+from ctrl_node.common.utils import askforhost
+from ctrl_node.variables.globals import COMMON_PORTS
 
 
 class ScanPorts:

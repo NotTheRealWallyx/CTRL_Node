@@ -1,6 +1,6 @@
-import questionary
-
 from importlib.metadata import version as get_version
+
+import questionary
 
 
 class Version:

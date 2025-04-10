@@ -1,11 +1,13 @@
 import sys
+
 import questionary
 
-from ctrl_node.common.utils import clean_console
 from ctrl_node.common.modules.dns import DnsScan
 from ctrl_node.common.modules.host_to_ip import HostToIp
 from ctrl_node.common.modules.ports import ScanPorts
 from ctrl_node.common.modules.version import Version
+from ctrl_node.common.modules.whois import Whois
+from ctrl_node.common.utils import clean_console
 from ctrl_node.variables.logos import MAIN_LOGO
 
 
@@ -32,7 +34,8 @@ class CTRL_Node:
                 "1 - Scan ports",
                 "2 - DNS look up",
                 "3 - Host to IP",
-                "4 - Show application version",
+                "4 - Whois",
+                "5 - Show application version",
                 "0 - Exit",
             ],
         ).ask()
@@ -56,6 +59,8 @@ class CTRL_Node:
             host_to_ip = HostToIp()
             host_to_ip.get_ip_from_hostname()
         elif option.startswith("4"):
+            Whois()
+        elif option.startswith("5"):
             Version()
         elif option.startswith("0"):
             sys.exit()

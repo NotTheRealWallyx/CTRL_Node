@@ -1,7 +1,7 @@
 """Class that manages dns lookup"""
 
-from dns.resolver import NoAnswer, query
 import questionary
+from dns.resolver import NoAnswer, query
 
 from ctrl_node.common.utils import askforhost
 

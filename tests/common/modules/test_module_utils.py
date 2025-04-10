@@ -1,5 +1,6 @@
 import unittest
 from unittest.mock import patch
+
 from ctrl_node.common.modules.module_utils import show_port_open_or_close
 
 

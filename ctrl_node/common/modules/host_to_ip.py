@@ -1,6 +1,7 @@
 """Class that manages dns lookup"""
 
 import socket
+
 import questionary
 
 from ctrl_node.common.utils import askforhost

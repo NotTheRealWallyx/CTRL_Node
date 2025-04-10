@@ -1,5 +1,6 @@
 import unittest
 from unittest.mock import patch
+
 from ctrl_node.common.modules.ports import ScanPorts
 from ctrl_node.variables.globals import COMMON_PORTS
 
