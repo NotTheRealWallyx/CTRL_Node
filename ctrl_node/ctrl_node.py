@@ -15,12 +15,12 @@ from ctrl_node.variables.logos import MAIN_LOGO
 class CTRL_Node:
     """Main class for the application"""
 
-    def __init__(self):
+    def __init__(self, loop=True):
         """
         Clears the console and shows the menu to ask the user
         to select an option.
         """
-        while True:
+        while loop:
             clean_console()
             print(MAIN_LOGO)
             self.show_menu()
