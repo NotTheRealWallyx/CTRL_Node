@@ -1,12 +1,9 @@
 """Functions that have to do with port scanning"""
 
 import socket
-import sys
-from datetime import datetime
 
 from ctrl_node.common.utils import (
     askforhost,
-    clean_console,
 )
 from ctrl_node.variables.globals import COMMON_PORTS
 from ctrl_node.common.modules.module_utils import show_port_open_or_close
