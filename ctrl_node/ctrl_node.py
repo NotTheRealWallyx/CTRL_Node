@@ -59,9 +59,6 @@ class CTRL_Node:
             Version()
         elif option.startswith("0"):
             sys.exit()
-        else:
-            print("Invalid option. Please try again.")
-            try_again(self)
 
 
 def main():
