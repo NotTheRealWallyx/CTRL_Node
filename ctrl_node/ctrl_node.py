@@ -57,7 +57,7 @@ class CTRL_Node:
         elif option.startswith("3"):
             run_host_to_ip()
         elif option.startswith("4"):
-            run_version()
+            Version()
         elif option.startswith("0"):
             sys.exit()
         else:
@@ -79,12 +79,6 @@ def run_host_to_ip():
     display_host_to_ip_header()
     hostToIp = HostToIp()
     hostToIp.get_ip_from_hostname()
-
-
-def run_version():
-    """Run the version display"""
-    # clean_console()
-    Version()
 
 
 def main():
