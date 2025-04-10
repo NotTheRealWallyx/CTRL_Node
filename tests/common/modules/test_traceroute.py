@@ -1,3 +1,4 @@
+import io
 import subprocess
 import unittest
 from unittest.mock import MagicMock, patch
@@ -10,7 +11,7 @@ class TestTraceroute(unittest.TestCase):
     @patch("questionary.text")
     def test_traceroute_system(self, mock_questionary_text, mock_popen):
         mock_process = MagicMock()
-        mock_process.stdout = ["line 1\n", "line 2\n", "line 3\n"]
+        mock_process.stdout = io.StringIO("line 1\nline 2\nline 3\n")
         mock_process.wait.return_value = None
         mock_popen.return_value = mock_process
 
@@ -27,5 +28,5 @@ class TestTraceroute(unittest.TestCase):
         )
 
         expected_output = "line 1\nline 2\nline 3\n"
-        printed_output = "".join(mock_process.stdout)
+        printed_output = mock_process.stdout.getvalue()
         self.assertEqual(printed_output, expected_output)
