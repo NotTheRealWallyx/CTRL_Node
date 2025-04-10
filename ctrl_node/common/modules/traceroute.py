@@ -18,11 +18,16 @@ class Traceroute:
         """
         Performs a traceroute to the given host using the system's traceroute command.
         """
-
-        result = subprocess.run(
-            ["traceroute", self.host], capture_output=True, text=True
+        process = subprocess.Popen(
+            ["traceroute", self.host],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
         )
 
-        print(result.stdout)
+        for line in process.stdout:
+            print(line, end="")
+
+        process.wait()
 
         questionary.text("Press Enter to return to the menu...").ask()

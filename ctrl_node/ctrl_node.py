@@ -5,6 +5,7 @@ import questionary
 from ctrl_node.common.modules.dns import DnsScan
 from ctrl_node.common.modules.host_to_ip import HostToIp
 from ctrl_node.common.modules.ports import ScanPorts
+from ctrl_node.common.modules.traceroute import Traceroute
 from ctrl_node.common.modules.version import Version
 from ctrl_node.common.modules.whois import Whois
 from ctrl_node.common.utils import clean_console
@@ -35,7 +36,8 @@ class CTRL_Node:
                 "2 - DNS look up",
                 "3 - Host to IP",
                 "4 - Whois",
-                "5 - Show application version",
+                "5 - Traceroute",
+                "6 - Show application version",
                 "0 - Exit",
             ],
         ).ask()
@@ -63,6 +65,9 @@ class CTRL_Node:
             whois.fetch_domain_info()
             whois.display_domain_info()
         elif option.startswith("5"):
+            traceroute = Traceroute()
+            traceroute.traceroute_system()
+        elif option.startswith("6"):
             version = Version()
             version.display_version()
         elif option.startswith("0"):
