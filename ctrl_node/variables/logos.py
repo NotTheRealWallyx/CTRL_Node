@@ -1,5 +1,3 @@
-"""Variables that contain the logo ASCII art"""
-
 import pyfiglet
 
 

@@ -11,6 +11,7 @@ Scan the ports of your server or get the DNS records with this small scripts.
 - **Port Scanning**: Scan all ports or common ports of a remote server.
 - **DNS Lookup**: Retrieve DNS records such as MX, NS, A, AAAA, SOA, and TXT.
 - **Host to IP Conversion**: Convert a hostname to its corresponding IP address.
+- **WHOIS Lookup**: Perform a WHOIS lookup for a given domain.
 
 ## Installation
 
@@ -44,8 +45,9 @@ python -m ctrl_node
 1. **Scan Ports**: Choose to scan all ports or common ports of a remote server.
 2. **DNS Lookup**: Retrieve DNS records for a given domain.
 3. **Host to IP**: Convert a hostname to its IP address.
-4. **Show Application Version**: Display the current version of the application.
-5. **Exit**: Close the application.
+4. **Whois Lookup**: Perform a WHOIS lookup for a given domain.
+5. **Show Application Version**: Display the current version of the application.
+6. **Exit**: Close the application.
 
 ## Tools used
 
@@ -53,8 +55,6 @@ python -m ctrl_node
 
 To keep the application with a standard we use the following tools:
 
-- [Codacy](https://www.codacy.com)
-- [Pylint](https://www.pylint.org)
 - [isort](https://timothycrosley.github.io/isort/)
 - [Black](https://black.readthedocs.io/en/stable/)
 

@@ -1,7 +1,5 @@
-"""Class that manages dns lookup"""
-
-from dns.resolver import NoAnswer, query
 import questionary
+from dns.resolver import NoAnswer, query
 
 from ctrl_node.common.utils import askforhost
 
@@ -9,7 +7,7 @@ from ctrl_node.common.utils import askforhost
 class DnsScan:
     def __init__(self):
         """
-        Initializes the DNS scan class.
+        Initializes the DnsScan class and sets up the host variable.
         """
         self.host = None
 

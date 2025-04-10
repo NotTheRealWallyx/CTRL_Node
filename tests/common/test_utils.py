@@ -1,9 +1,7 @@
 import unittest
 from unittest.mock import patch
-from ctrl_node.common.utils import (
-    askforhost,
-    clean_console,
-)
+
+from ctrl_node.common.utils import askforhost, clean_console
 
 
 class TestUtils(unittest.TestCase):

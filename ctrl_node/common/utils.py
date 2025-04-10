@@ -1,14 +1,19 @@
 from subprocess import run
+
 import questionary
 
 
 def clean_console():
-    """Clean the console in a secure way"""
+    """
+    Clean the console in a secure way
+    """
     execute_clear_command()
 
 
 def execute_clear_command():
-    """Executes the clear command"""
+    """
+    Executes the clear command in a secure way
+    """
     run(["/usr/bin/clear"], shell=False, check=True)
 
 
