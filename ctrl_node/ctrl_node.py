@@ -50,11 +50,11 @@ class CTRL_Node:
             scan = ScanPorts()
             scan.scan_all_ports()
         elif option.startswith("2"):
-            dnsScan = DnsScan()
-            dnsScan.scan_host()
+            dns_scan = DnsScan()
+            dns_scan.scan_host()
         elif option.startswith("3"):
-            hostToIp = HostToIp()
-            hostToIp.get_ip_from_hostname()
+            host_to_ip = HostToIp()
+            host_to_ip.get_ip_from_hostname()
         elif option.startswith("4"):
             Version()
         elif option.startswith("0"):

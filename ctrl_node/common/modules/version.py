@@ -1,6 +1,6 @@
 import questionary
 
-from ctrl_node.common.utils import get_version
+from importlib.metadata import version as get_version
 
 
 class Version:
