@@ -44,8 +44,9 @@ python -m ctrl_node
 1. **Scan Ports**: Choose to scan all ports or common ports of a remote server.
 2. **DNS Lookup**: Retrieve DNS records for a given domain.
 3. **Host to IP**: Convert a hostname to its IP address.
-4. **Show Application Version**: Display the current version of the application.
-5. **Exit**: Close the application.
+4. **Whois Lookup**: Perform a WHOIS lookup for a given domain.
+5. **Show Application Version**: Display the current version of the application.
+6. **Exit**: Close the application.
 
 ## Tools used
 
