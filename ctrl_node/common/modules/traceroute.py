@@ -16,7 +16,7 @@ class Traceroute:
 
     def traceroute_system(self):
         """
-        Performs a traceroute to the given host using the system's traceroute command.
+        Performs a traceroute for the given host.
         """
         process = subprocess.Popen(
             ["traceroute", self.host],
