@@ -54,7 +54,6 @@ python -m ctrl_node
 
 To keep the application with a standard we use the following tools:
 
-- [Codacy](https://www.codacy.com)
 - [Pylint](https://www.pylint.org)
 - [isort](https://timothycrosley.github.io/isort/)
 - [Black](https://black.readthedocs.io/en/stable/)

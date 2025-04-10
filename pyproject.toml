@@ -22,6 +22,7 @@ pytest = "*"
 black = "^25.1.0"
 pre-commit = "^4.2.0"
 isort = "^6.0.1"
+pylint = "^3.3.6"
 
 [tool.poetry.scripts]
 CTRL_Node = "ctrl_node.ctrl_node:main"
