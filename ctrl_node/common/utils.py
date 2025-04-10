@@ -4,16 +4,6 @@ from importlib.metadata import version as get_version
 import questionary
 
 
-def display_scan_ports_header():
-    """Displays the SCAN_PORTS_LOGO header"""
-    print(SCAN_PORTS_LOGO)
-
-
-def display_host_to_ip_header():
-    """Displays the HOST_TO_IP_LOGO header"""
-    print(HOST_TO_IP_LOGO)
-
-
 def clean_console():
     """Clean the console in a secure way"""
     execute_clear_command()
