@@ -1,13 +1,11 @@
 version: 2
 updates:
-- package-ecosystem: pip
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-  reviewers:
-  - NotTheRealWallyx
-  assignees:
-  - NotTheRealWallyx
-  labels:
-  - dependencies
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    assignees:
+      - NotTheRealWallyx
+    labels:
+      - dependencies
