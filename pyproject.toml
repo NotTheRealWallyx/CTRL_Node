@@ -13,7 +13,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = ">=3.9"
 dnspython = "*"
-pyfiglet = "^1.0.3"
+pyfiglet = "^1.0.4"
 questionary = "^2.1.0"
 python-whois = "^0.9.5"
 
