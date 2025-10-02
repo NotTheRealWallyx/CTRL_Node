@@ -21,7 +21,7 @@ python-whois = "^0.9.5"
 pytest = "*"
 black = "^25.9.0"
 pre-commit = "^4.3.0"
-isort = "^6.0.1"
+isort = "^6.1.0"
 
 [tool.poetry.scripts]
 CTRL_Node = "ctrl_node.ctrl_node:main"
