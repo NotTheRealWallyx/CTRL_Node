@@ -19,7 +19,7 @@ python-whois = "^0.9.6"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "*"
-black = "^25.9.0"
+black = "^25.11.0"
 pre-commit = "^4.3.0"
 isort = "^6.1.0"
 
