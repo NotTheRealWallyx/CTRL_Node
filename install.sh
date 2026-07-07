@@ -5,8 +5,8 @@ correct_python_message(){
     echo "[OK] -- Python 3 installed"
 }
 
-create_virtual_env(){
-    python3 setup.py install
+install_with_poetry(){
+    poetry install
 }
 
 not_version_error(){
@@ -15,17 +15,14 @@ not_version_error(){
     echo " - - - - - - - - - - - - - - - - - - - - - - - -";
     echo "Thanks, bye :)";
 }
-export_python(){
-    PROJECT_ROOT_ABSOLUTE_PATH=$(pwd)
-    export PYTHONPATH="$PROJECT_ROOT_ABSOLUTE_PATH:$PYTHONPATH"
-}
 
 echo "Making Initial checks:"
 
 # Check if Python 3 is installed
 if [[ "$(python3 -V)" =~ "Python 3" ]]; then
-    create_virtual_env
-    export_python
+    correct_python_message
+    install_with_poetry
+    echo "[OK] -- Run the app with: poetry run ctrl-node"
 else
     not_version_error
 fi
