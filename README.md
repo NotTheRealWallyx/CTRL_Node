@@ -13,6 +13,7 @@ Scan the ports of your server or get the DNS records with this small scripts.
 - **Host to IP Conversion**: Convert a hostname to its corresponding IP address.
 - **WHOIS Lookup**: Perform a WHOIS lookup for a given domain.
 - **TraceRoute**: Trace the route to a given IP address or hostname.
+- **SSL/TLS Certificate Check**: Inspect a remote server's certificate for subject, issuer, and expiry.
 
 ## Installation
 
