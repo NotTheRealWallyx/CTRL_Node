@@ -5,6 +5,7 @@ import questionary
 from ctrl_node.common.modules.dns import DnsScan
 from ctrl_node.common.modules.host_to_ip import HostToIp
 from ctrl_node.common.modules.ports import ScanPorts
+from ctrl_node.common.modules.ssl_check import SslCheck
 from ctrl_node.common.modules.traceroute import Traceroute
 from ctrl_node.common.modules.version import Version
 from ctrl_node.common.modules.whois import Whois
@@ -38,6 +39,7 @@ class CTRL_Node:
                 "4 - Whois",
                 "5 - Traceroute",
                 "6 - Show application version",
+                "7 - SSL Certificate Check",
                 "0 - Exit",
             ],
         ).ask()
@@ -70,6 +72,10 @@ class CTRL_Node:
         elif option == "6 - Show application version":
             version = Version()
             version.display_version()
+        elif option == "7 - SSL Certificate Check":
+            ssl_check = SslCheck()
+            ssl_check.fetch_certificate()
+            ssl_check.display_certificate_info()
         elif option == "0 - Exit":
             sys.exit()
 
