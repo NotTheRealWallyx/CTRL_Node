@@ -13,6 +13,7 @@ Scan the ports of your server or get the DNS records with this small scripts.
 - **Host to IP Conversion**: Convert a hostname to its corresponding IP address.
 - **WHOIS Lookup**: Perform a WHOIS lookup for a given domain.
 - **TraceRoute**: Trace the route to a given IP address or hostname.
+- **SSL/TLS Certificate Check**: Inspect a remote server's certificate for subject, issuer, and expiry.
 
 ## Installation
 
@@ -22,23 +23,30 @@ Clone the repository from Github with:
 git clone git@github.com:NotTheRealWallyx/CTRL_Node.git
 ```
 
-Run the installation script:
+Install the dependencies with [Poetry](https://python-poetry.org/):
 
 ```shell
-python setup.py install
+poetry install
 ```
 
 ## Requirements
 
-- Python 3.x
-- `dnspython` library (automatically installed during setup)
+- Python 3.9+
+- [Poetry](https://python-poetry.org/) for dependency management
 
 ## Usage
 
 Run the application with:
 
 ```shell
-python -m ctrl_node
+poetry run ctrl-node
+```
+
+If you're working from a source checkout and don't want to use the
+installed console script, you can also run it as a module:
+
+```shell
+poetry run python -m ctrl_node
 ```
 
 ## Tools used
