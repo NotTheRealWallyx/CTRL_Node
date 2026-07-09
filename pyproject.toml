@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "CTRL_Node"
-version = "0.0.2"
+version = "0.0.3"
 description = "Various tools for managing or checking servers"
 authors = ["NotTheRealWallyx"]
 keywords = ["python", "scripts", "server", "tools", "dns", "records"]
