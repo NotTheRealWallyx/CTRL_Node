@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "CTRL_Node"
-version = "0.0.2"
+version = "0.0.3"
 description = "Various tools for managing or checking servers"
 authors = ["NotTheRealWallyx"]
 keywords = ["python", "scripts", "server", "tools", "dns", "records"]
@@ -25,6 +25,9 @@ isort = "^6.1.0"
 
 [tool.poetry.scripts]
 ctrl-node = "ctrl_node.ctrl_node:main"
+
+[tool.isort]
+profile = "black"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

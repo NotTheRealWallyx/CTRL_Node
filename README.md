@@ -14,6 +14,7 @@ Scan the ports of your server or get the DNS records with this small scripts.
 - **WHOIS Lookup**: Perform a WHOIS lookup for a given domain.
 - **TraceRoute**: Trace the route to a given IP address or hostname.
 - **SSL/TLS Certificate Check**: Inspect a remote server's certificate for subject, issuer, and expiry.
+- **Website Latency Check**: Break down request latency into DNS lookup, TCP connect, TLS handshake, time to first byte, and content download.
 
 ## Installation
 
