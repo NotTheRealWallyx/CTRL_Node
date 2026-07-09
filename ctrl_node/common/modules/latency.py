@@ -4,6 +4,7 @@ import time
 
 import questionary
 
+from ctrl_node.common.modules.module_utils import rate_ttfb
 from ctrl_node.common.utils import askforhost
 
 
@@ -29,6 +30,7 @@ class LatencyCheck:
         self.use_tls = use_tls
         self.path = path
         self.timings = {}
+        self.ip_address = None
 
     def measure_latency(self):
         """
@@ -41,11 +43,13 @@ class LatencyCheck:
             address_info = self.time_phase(
                 "DNS lookup", lambda: socket.getaddrinfo(self.host, self.port)
             )
-            ip_address = address_info[0][4][0]
+            self.ip_address = address_info[0][4][0]
 
             sock = self.time_phase(
                 "TCP connect",
-                lambda: socket.create_connection((ip_address, self.port), timeout=10),
+                lambda: socket.create_connection(
+                    (self.ip_address, self.port), timeout=10
+                ),
             )
 
             if self.use_tls:
@@ -105,17 +109,28 @@ class LatencyCheck:
 
     def display_results(self):
         """
-        Displays the measured timings for each phase along with the
-        total time taken.
+        Displays the measured timings for each phase, each phase's share
+        of the total time, and a rating of the server's responsiveness.
         """
         if not self.timings:
             print("No latency data available.")
         else:
+            total = sum(self.timings.values())
+            header = f"Latency results for {self.host}"
+            if self.ip_address:
+                header += f" ({self.ip_address})"
+
             print("-" * 60)
-            print(f"Latency results for {self.host}")
+            print(header)
             print("-" * 60)
             for phase, duration in self.timings.items():
-                print(f"{phase}: \t {duration * 1000:.2f} ms")
-            print(f"Total: \t {sum(self.timings.values()) * 1000:.2f} ms")
+                share = (duration / total * 100) if total else 0
+                print(f"{phase}: \t {duration * 1000:.2f} ms \t ({share:.1f}%)")
+            print("-" * 60)
+            print(f"Total: \t {total * 1000:.2f} ms")
+
+            ttfb = self.timings.get("Time to first byte")
+            if ttfb is not None:
+                print(f"Server response rating: {rate_ttfb(ttfb)} (TTFB-based)")
 
         questionary.text("Press Enter to return to the menu...").ask()

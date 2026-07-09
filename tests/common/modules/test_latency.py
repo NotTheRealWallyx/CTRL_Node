@@ -38,6 +38,7 @@ class TestLatencyCheck(unittest.TestCase):
         self.assertIn("TLS handshake", instance.timings)
         self.assertIn("Time to first byte", instance.timings)
         self.assertIn("Content download", instance.timings)
+        self.assertEqual(instance.ip_address, "93.184.216.34")
         mock_ssock.sendall.assert_called_once()
         mock_ssock.close.assert_called_once()
 
@@ -60,14 +61,34 @@ class TestLatencyCheck(unittest.TestCase):
     def test_display_results_with_data(self, mock_print, mock_questionary_text):
         mock_questionary_text.return_value.ask.return_value = None
         instance = LatencyCheck(host="example.com")
-        instance.timings = {"DNS lookup": 0.01, "TCP connect": 0.02}
+        instance.timings = {
+            "DNS lookup": 0.01,
+            "TCP connect": 0.02,
+            "Time to first byte": 0.05,
+        }
 
         instance.display_results()
 
         mock_print.assert_any_call("Latency results for example.com")
+        mock_print.assert_any_call("Server response rating: Good (TTFB-based)")
         mock_questionary_text.assert_called_once_with(
             "Press Enter to return to the menu..."
         )
+
+    @patch("ctrl_node.common.modules.latency.questionary.text")
+    @patch("builtins.print")
+    def test_display_results_includes_ip_and_percentage(
+        self, mock_print, mock_questionary_text
+    ):
+        mock_questionary_text.return_value.ask.return_value = None
+        instance = LatencyCheck(host="example.com")
+        instance.ip_address = "93.184.216.34"
+        instance.timings = {"DNS lookup": 0.01, "TCP connect": 0.03}
+
+        instance.display_results()
+
+        mock_print.assert_any_call("Latency results for example.com (93.184.216.34)")
+        mock_print.assert_any_call("DNS lookup: \t 10.00 ms \t (25.0%)")
 
     @patch("ctrl_node.common.modules.latency.questionary.text")
     @patch("builtins.print")
